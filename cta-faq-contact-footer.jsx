@@ -1,0 +1,672 @@
+// === Emergency CTA, FAQ, Contact, Footer, WhatsApp Float ===
+
+function EmergencyCTA() {
+  return (
+    <section id="emergency" style={{
+      position: "relative",
+      padding: "80px 0",
+      overflow: "hidden",
+    }}>
+      <div className="container">
+        <div style={{
+          position: "relative",
+          background: "linear-gradient(135deg, #F97316 0%, #EA580C 60%, #C2410C 100%)",
+          borderRadius: 32,
+          padding: "72px 56px",
+          overflow: "hidden",
+          color: "#fff",
+        }}>
+          {/* deco shapes */}
+          <div style={{
+            position: "absolute", top: -100, right: -50,
+            width: 400, height: 400, borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%)",
+            filter: "blur(20px)",
+          }}/>
+          <div className="bg-grid-dark" style={{
+            position: "absolute", inset: 0,
+            opacity: .35,
+            maskImage: "radial-gradient(ellipse 60% 80% at 30% 50%, #000 30%, transparent 80%)",
+            WebkitMaskImage: "radial-gradient(ellipse 60% 80% at 30% 50%, #000 30%, transparent 80%)",
+          }}/>
+
+          <div className="cta-grid" style={{
+            position: "relative",
+            display: "grid",
+            gridTemplateColumns: "1.4fr 1fr",
+            gap: 48,
+            alignItems: "center",
+          }}>
+            <div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                padding: "6px 12px",
+                background: "rgba(255,255,255,0.18)",
+                border: "1px solid rgba(255,255,255,0.3)",
+                borderRadius: 999,
+                fontFamily: "var(--font-mono)", fontSize: 12,
+                letterSpacing: ".12em", textTransform: "uppercase",
+                color: "#fff",
+              }}>
+                <span style={{
+                  width: 8, height: 8, borderRadius: "50%", background: "#fff",
+                  animation: "pulseFast 1.5s ease-in-out infinite",
+                }}/> 24 / 7 Emergency Line
+              </div>
+              <h2 style={{
+                fontSize: "clamp(36px, 5vw, 60px)",
+                marginTop: 20, color: "#fff",
+                fontWeight: 600,
+              }}>Need immediate assistance?</h2>
+              <p style={{
+                fontSize: 19, color: "rgba(255,255,255,0.85)",
+                marginTop: 16, maxWidth: 540,
+              }}>
+                Burst pipe? Power out? HVAC failing on a 90° day? Our emergency dispatch routes
+                a licensed technician to your door — typically within 30 minutes.
+              </p>
+              <div style={{ display: "flex", gap: 12, marginTop: 32, flexWrap: "wrap" }}>
+                <a href="tel:+18005551234" className="btn btn-white" style={{ fontWeight: 600 }}>
+                  <Icon.Phone size={16}/> Call 1-800-555-LGIT
+                </a>
+                <a href="#contact" className="btn" style={{
+                  background: "rgba(255,255,255,0.12)", color: "#fff",
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  backdropFilter: "blur(10px)",
+                }}>
+                  Request Emergency Service <Icon.ArrowRight size={14}/>
+                </a>
+              </div>
+            </div>
+
+            <div style={{ position: "relative" }}>
+              <div className="glass" style={{
+                padding: 24,
+                background: "rgba(255,255,255,0.12)",
+                border: "1px solid rgba(255,255,255,0.25)",
+                color: "#fff",
+              }}>
+                <div style={{ fontSize: 11, fontFamily: "var(--font-mono)", letterSpacing: ".12em", opacity: .8 }}>LIVE DISPATCH</div>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 56, fontWeight: 600, lineHeight: 1, marginTop: 8 }}>28<span style={{ fontSize: 24, opacity: .8 }}>min</span></div>
+                <div style={{ fontSize: 14, opacity: .85, marginTop: 4 }}>average response · last 30 days</div>
+
+                <div style={{ marginTop: 24, display: "grid", gap: 10 }}>
+                  {[
+                    { l: "Available now", v: "14 techs" },
+                    { l: "Active incidents", v: "3" },
+                    { l: "Coverage", v: "24/7/365" },
+                  ].map(r => (
+                    <div key={r.l} style={{
+                      display: "flex", justifyContent: "space-between",
+                      padding: "10px 0",
+                      borderBottom: "1px solid rgba(255,255,255,0.15)",
+                      fontSize: 13,
+                    }}>
+                      <span style={{ opacity: .85 }}>{r.l}</span>
+                      <span style={{ fontFamily: "var(--font-mono)", fontWeight: 500 }}>{r.v}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes pulseFast {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+          50% { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+        }
+        @media (max-width: 820px) {
+          .cta-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+/* === FAQ === */
+const FAQS = [
+  { q: "What areas do you serve?", a: "We currently operate across 14 metros in the Western US — primary coverage in the Pacific Northwest, Bay Area, Southern California, Phoenix, Denver, and Salt Lake City. For multi-site portfolio contracts, we extend service nationally through our partner network." },
+  { q: "Do you provide 24/7 emergency services?", a: "Yes. Our emergency line is staffed every hour of every day, including holidays. Average on-site response is 28 minutes for properties under contract, and under 90 minutes for first-time callers." },
+  { q: "Are your technicians certified and insured?", a: "Every Logic Gate IT technician is licensed in their trade, OSHA-30 certified, background-checked, and covered under our $5M general liability policy. We're happy to send certificates of insurance per project." },
+  { q: "What software solutions do you offer?", a: "Logic Gate Cloud is our property operations platform — work order management, asset tracking, vendor coordination, tenant communications, and executive reporting. We also offer managed IT, cloud infrastructure, and bespoke integrations with Yardi, AppFolio, and Salesforce." },
+  { q: "Do you handle commercial properties?", a: "Roughly 70% of our portfolio is commercial — office, industrial, retail, and multi-family. We're equipped for high-rise mechanical systems, commercial kitchens, server rooms, and large-format landscape contracts." },
+  { q: "How do maintenance plans work?", a: "We start with a free site audit to inventory your assets and identify deferred maintenance. From there we build a quarterly preventative schedule with flat-rate pricing, plus 24/7 reactive coverage included." },
+];
+
+function FAQ() {
+  const [open, setOpen] = React.useState(0);
+
+  return (
+    <section className="section" style={{ background: "var(--bg)" }}>
+      <div className="container" style={{ maxWidth: 880 }}>
+        <div className="section-head">
+          <div className="eyebrow" style={{ margin: "0 auto" }}><span className="dot"/> Questions</div>
+          <h2>Frequently asked.</h2>
+          <p>If your question isn't here, our team will give you a real answer over the phone — usually within the same business day.</p>
+        </div>
+
+        <div style={{
+          background: "var(--bg-2)",
+          border: "1px solid var(--line)",
+          borderRadius: 20,
+          overflow: "hidden",
+        }}>
+          {FAQS.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={i} style={{
+                borderBottom: i < FAQS.length - 1 ? "1px solid var(--line)" : "none",
+              }}>
+                <button
+                  onClick={() => setOpen(isOpen ? -1 : i)}
+                  aria-expanded={isOpen}
+                  style={{
+                    width: "100%",
+                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    gap: 16,
+                    padding: "24px 28px",
+                    background: "transparent",
+                    border: "none",
+                    textAlign: "left",
+                    cursor: "pointer",
+                    fontFamily: "var(--font-display)",
+                    fontSize: 18,
+                    fontWeight: 500,
+                    color: "var(--navy-900)",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  <span>{f.q}</span>
+                  <span style={{
+                    width: 32, height: 32, borderRadius: 8,
+                    background: isOpen ? "var(--navy-900)" : "#fff",
+                    color: isOpen ? "#fff" : "var(--ink-2)",
+                    border: "1px solid " + (isOpen ? "var(--navy-900)" : "var(--line)"),
+                    display: "grid", placeItems: "center",
+                    transition: "all .2s",
+                    flexShrink: 0,
+                  }}>
+                    {isOpen ? <Icon.Minus size={16}/> : <Icon.Plus size={16}/>}
+                  </span>
+                </button>
+                <div style={{
+                  display: "grid",
+                  gridTemplateRows: isOpen ? "1fr" : "0fr",
+                  transition: "grid-template-rows .3s ease",
+                }}>
+                  <div style={{ overflow: "hidden" }}>
+                    <div style={{
+                      padding: "0 28px 24px",
+                      color: "var(--ink-2)",
+                      fontSize: 15.5,
+                      lineHeight: 1.6,
+                      maxWidth: 720,
+                    }}>{f.a}</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* === CONTACT === */
+function Contact() {
+  const [form, setForm] = React.useState({ name: "", email: "", phone: "", service: "Plumbing", message: "" });
+  const [submitted, setSubmitted] = React.useState(false);
+
+  const set = k => e => setForm(f => ({ ...f, [k]: e.target.value }));
+  const submit = e => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 4000);
+  };
+
+  return (
+    <section id="contact" className="section" style={{ background: "var(--bg-2)" }}>
+      <div className="container">
+        <div className="section-head left" style={{ textAlign: "left", maxWidth: 720 }}>
+          <div className="eyebrow"><span className="dot"/> Contact</div>
+          <h2 style={{ fontSize: "clamp(36px, 4.4vw, 56px)" }}>Let's talk about your property.</h2>
+          <p>Send us a note or call directly. For active emergencies, please use the 24/7 line — we'll get to you faster.</p>
+        </div>
+
+        <div className="contact-grid" style={{
+          display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 32,
+        }}>
+          {/* LEFT — info */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div className="card" style={{
+              background: "var(--navy-900)", color: "#fff",
+              border: "1px solid rgba(255,255,255,0.08)",
+              padding: 28,
+              position: "relative", overflow: "hidden",
+            }}>
+              <div style={{
+                position: "absolute", top: -40, right: -40, width: 200, height: 200,
+                background: "radial-gradient(circle, rgba(37,99,235,0.4), transparent 70%)",
+                filter: "blur(40px)",
+              }}/>
+              <Icon.Phone size={24} stroke="#60A5FA"/>
+              <div style={{ fontSize: 12, color: "rgba(148,163,184,0.8)", marginTop: 14, fontFamily: "var(--font-mono)", letterSpacing: ".08em" }}>CALL US</div>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 600, marginTop: 4 }}>1-800-555-LGIT</div>
+              <div style={{ fontSize: 13, color: "rgba(148,163,184,0.9)", marginTop: 6 }}>Emergency line · 24/7/365</div>
+            </div>
+
+            {[
+              { I: "Mail",  l: "Email",   v: "hello@logicgateit.com",         s: "Reply within 1 business hour" },
+              { I: "MapPin",l: "Office",  v: "1420 SE Industrial Way",      s: "Portland, OR 97214" },
+              { I: "Clock", l: "Hours",   v: "Mon–Fri · 7am – 7pm PT",     s: "Saturday · 8am – 4pm" },
+            ].map(c => {
+              const IconCmp = Icon[c.I];
+              return (
+                <div key={c.l} className="card" style={{ padding: 22, display: "flex", gap: 14, alignItems: "flex-start" }}>
+                  <div style={{
+                    width: 40, height: 40, borderRadius: 10,
+                    background: "rgba(37,99,235,0.08)",
+                    display: "grid", placeItems: "center",
+                    flexShrink: 0,
+                  }}><IconCmp size={20} stroke="var(--blue-600)"/></div>
+                  <div>
+                    <div style={{ fontSize: 12, fontFamily: "var(--font-mono)", letterSpacing: ".08em", color: "var(--ink-3)", textTransform: "uppercase" }}>{c.l}</div>
+                    <div style={{ fontWeight: 600, fontSize: 16, marginTop: 4 }}>{c.v}</div>
+                    <div style={{ fontSize: 13, color: "var(--ink-2)", marginTop: 2 }}>{c.s}</div>
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* Map placeholder */}
+            <div style={{
+              borderRadius: 16, overflow: "hidden",
+              border: "1px solid var(--line)",
+              position: "relative", height: 200,
+              background: `
+                linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%)
+              `,
+            }}>
+              {/* fake map grid */}
+              <div style={{
+                position: "absolute", inset: 0,
+                backgroundImage: `
+                  linear-gradient(rgba(100,116,139,0.25) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(100,116,139,0.25) 1px, transparent 1px)
+                `,
+                backgroundSize: "32px 32px",
+              }}/>
+              {/* fake roads */}
+              <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 400 200" preserveAspectRatio="none">
+                <path d="M0,80 Q150,60 200,100 T400,120" stroke="rgba(100,116,139,0.5)" strokeWidth="3" fill="none"/>
+                <path d="M50,0 L120,200" stroke="rgba(100,116,139,0.4)" strokeWidth="2" fill="none"/>
+                <path d="M280,0 L320,200" stroke="rgba(100,116,139,0.4)" strokeWidth="2" fill="none"/>
+              </svg>
+              {/* pin */}
+              <div style={{
+                position: "absolute", top: "45%", left: "50%", transform: "translate(-50%, -100%)",
+                display: "flex", flexDirection: "column", alignItems: "center", gap: 4,
+              }}>
+                <div style={{
+                  background: "var(--navy-900)", color: "#fff",
+                  padding: "6px 12px", borderRadius: 8,
+                  fontSize: 12, fontWeight: 500,
+                  boxShadow: "var(--shadow)",
+                }}>Logic Gate IT HQ</div>
+                <div style={{
+                  width: 18, height: 18, borderRadius: "50% 50% 50% 0",
+                  background: "var(--orange-500)",
+                  transform: "rotate(-45deg)",
+                  border: "3px solid #fff",
+                  boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                }}/>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT — form */}
+          <form onSubmit={submit} className="card" style={{
+            padding: 36,
+            background: "#fff",
+            position: "relative",
+          }}>
+            <div className="form-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+              <Field label="Full name" v={form.name} onChange={set("name")} placeholder="Your name" required/>
+              <Field label="Email"     v={form.email} onChange={set("email")} placeholder="you@company.com" type="email" required/>
+              <Field label="Phone"     v={form.phone} onChange={set("phone")} placeholder="(555) 555-5555"/>
+              <SelectField label="Service type" v={form.service} onChange={set("service")} options={[
+                "Plumbing","Electrical","HVAC","Roofing","Landscaping","Carpentry","Painting","Appliance Repair","Property Maintenance","Software Support","Other"
+              ]}/>
+              <Field label="Message" v={form.message} onChange={set("message")} placeholder="Tell us about your property and what you need..." textarea full required/>
+            </div>
+
+            <div style={{
+              marginTop: 24, display: "flex", justifyContent: "space-between",
+              alignItems: "center", gap: 16, flexWrap: "wrap",
+            }}>
+              <div style={{ fontSize: 12, color: "var(--ink-3)", display: "flex", alignItems: "center", gap: 8 }}>
+                <Icon.Shield size={14}/> We respond within 1 business hour. Your details stay private.
+              </div>
+              <button type="submit" className="btn btn-primary" disabled={submitted}>
+                {submitted ? <><Icon.Check size={14}/> Sent — talk soon</> : <>Send message <Icon.Send size={14}/></>}
+              </button>
+            </div>
+
+            {submitted && (
+              <div style={{
+                position: "absolute", inset: 0,
+                background: "rgba(255,255,255,0.94)",
+                backdropFilter: "blur(6px)",
+                borderRadius: "var(--radius-lg)",
+                display: "grid", placeItems: "center",
+                animation: "fadeIn .3s ease",
+              }}>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{
+                    width: 64, height: 64, borderRadius: "50%",
+                    background: "linear-gradient(135deg, #22C55E, #16A34A)",
+                    display: "grid", placeItems: "center",
+                    margin: "0 auto 16px",
+                    boxShadow: "0 10px 30px -10px rgba(34,197,94,0.5)",
+                  }}><Icon.Check size={28} stroke="#fff" strokeWidth={2.5}/></div>
+                  <h3 style={{ fontSize: 24 }}>Thanks, {form.name || "there"}!</h3>
+                  <p style={{ color: "var(--ink-2)", marginTop: 8 }}>We'll be in touch shortly.</p>
+                </div>
+              </div>
+            )}
+          </form>
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .contact-grid { grid-template-columns: 1fr !important; }
+          .form-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+function Field({ label, v, onChange, placeholder, type = "text", required, textarea, full }) {
+  return (
+    <label style={{ display: "block", gridColumn: full ? "span 2" : "auto" }}>
+      <span style={{
+        fontSize: 12, fontFamily: "var(--font-mono)", letterSpacing: ".08em",
+        textTransform: "uppercase", color: "var(--ink-3)",
+        display: "block", marginBottom: 8,
+      }}>{label}{required && <span style={{ color: "var(--orange-500)" }}> *</span>}</span>
+      {textarea ? (
+        <textarea
+          value={v} onChange={onChange} placeholder={placeholder} required={required}
+          rows={5}
+          style={inputStyle}
+        />
+      ) : (
+        <input
+          type={type} value={v} onChange={onChange} placeholder={placeholder} required={required}
+          style={inputStyle}
+        />
+      )}
+    </label>
+  );
+}
+
+function SelectField({ label, v, onChange, options }) {
+  return (
+    <label style={{ display: "block" }}>
+      <span style={{
+        fontSize: 12, fontFamily: "var(--font-mono)", letterSpacing: ".08em",
+        textTransform: "uppercase", color: "var(--ink-3)",
+        display: "block", marginBottom: 8,
+      }}>{label}</span>
+      <div style={{ position: "relative" }}>
+        <select value={v} onChange={onChange} style={{
+          ...inputStyle, appearance: "none", paddingRight: 36,
+        }}>
+          {options.map(o => <option key={o} value={o}>{o}</option>)}
+        </select>
+        <span style={{
+          position: "absolute", right: 14, top: "50%",
+          transform: "translateY(-50%)", pointerEvents: "none",
+          color: "var(--ink-3)",
+        }}>▾</span>
+      </div>
+    </label>
+  );
+}
+
+const inputStyle = {
+  width: "100%",
+  padding: "12px 14px",
+  fontSize: 15,
+  fontFamily: "inherit",
+  color: "var(--navy-900)",
+  background: "var(--bg-2)",
+  border: "1px solid var(--line)",
+  borderRadius: 10,
+  outline: "none",
+  transition: "border-color .15s, background .15s",
+  resize: "vertical",
+};
+
+/* === FOOTER === */
+function Footer() {
+  return (
+    <footer style={{
+      background: "linear-gradient(180deg, #0F172A 0%, #0B1220 100%)",
+      color: "#CBD5E1",
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      <div style={{
+        position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
+        width: 600, height: 200,
+        background: "radial-gradient(ellipse, rgba(37,99,235,0.25), transparent 70%)",
+        filter: "blur(60px)",
+      }}/>
+      <div className="container" style={{ position: "relative", padding: "80px 32px 32px" }}>
+        <div className="footer-grid" style={{
+          display: "grid",
+          gridTemplateColumns: "1.4fr 1fr 1fr 1.2fr",
+          gap: 48,
+          paddingBottom: 56,
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
+        }}>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, color: "#fff" }}>
+              <Icon.Logo size={32}/>
+              <span style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 20 }}>Logic Gate IT</span>
+            </div>
+            <p style={{ marginTop: 12, fontSize: 13, color: "var(--blue-400)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em" }}>
+              Efficiently active, Effectively creative.
+            </p>
+            <p style={{ marginTop: 16, fontSize: 14.5, color: "rgba(203,213,225,0.7)", maxWidth: 320, lineHeight: 1.6 }}>
+              Integrated property maintenance and technology solutions for residential and commercial portfolios across the Western US.
+            </p>
+            <div style={{ display: "flex", gap: 10, marginTop: 24 }}>
+              {[
+                { I: "LinkedIn", h: "#" },
+                { I: "Twitter",  h: "#" },
+                { I: "Facebook", h: "#" },
+                { I: "Instagram",h: "#" },
+              ].map(s => {
+                const IconCmp = Icon[s.I];
+                return (
+                  <a key={s.I} href={s.h} aria-label={s.I} style={{
+                    width: 38, height: 38, borderRadius: 10,
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    display: "grid", placeItems: "center",
+                    color: "rgba(203,213,225,0.8)",
+                    transition: "all .2s",
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = "var(--blue-600)";
+                    e.currentTarget.style.borderColor = "var(--blue-600)";
+                    e.currentTarget.style.color = "#fff";
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                    e.currentTarget.style.color = "rgba(203,213,225,0.8)";
+                  }}
+                  ><IconCmp size={16}/></a>
+                );
+              })}
+            </div>
+          </div>
+
+          <FooterCol title="Company" links={["About","Projects","Careers","Contact"]}/>
+          <FooterCol title="Services" links={["Plumbing","HVAC","Electrical","Roofing","Software"]}/>
+
+          <div>
+            <div style={{ fontSize: 13, fontFamily: "var(--font-mono)", letterSpacing: ".12em", color: "rgba(148,163,184,0.7)", textTransform: "uppercase", marginBottom: 16 }}>Stay in touch</div>
+            <p style={{ fontSize: 14, color: "rgba(203,213,225,0.75)", marginBottom: 16 }}>
+              Quarterly updates on property operations, new service areas, and product releases.
+            </p>
+            <form onSubmit={e => e.preventDefault()} style={{
+              display: "flex", gap: 8,
+              padding: 6,
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.10)",
+              borderRadius: 12,
+            }}>
+              <input type="email" placeholder="you@company.com" style={{
+                flex: 1, padding: "8px 12px", border: "none", outline: "none",
+                background: "transparent", color: "#fff", fontSize: 14, fontFamily: "inherit",
+              }}/>
+              <button type="submit" className="btn btn-primary btn-sm" style={{ padding: "8px 14px" }}>
+                <Icon.ArrowRight size={14}/>
+              </button>
+            </form>
+            <div style={{ marginTop: 20, padding: 14, background: "rgba(249,115,22,0.08)", border: "1px solid rgba(249,115,22,0.2)", borderRadius: 10, display: "flex", alignItems: "center", gap: 10 }}>
+              <Icon.Phone size={16} stroke="#F97316"/>
+              <div>
+                <div style={{ fontSize: 11, color: "rgba(251,146,60,0.9)", fontFamily: "var(--font-mono)", letterSpacing: ".08em" }}>24/7 EMERGENCY</div>
+                <div style={{ fontSize: 14, color: "#fff", fontWeight: 600 }}>1-800-555-LGIT</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style={{
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+          paddingTop: 24, flexWrap: "wrap", gap: 16,
+          fontSize: 13, color: "rgba(148,163,184,0.6)",
+        }}>
+          <div>© 2026 Logic Gate IT Property &amp; Technology Solutions. All rights reserved.</div>
+          <div style={{ display: "flex", gap: 24 }}>
+            <a href="#" style={{ color: "rgba(148,163,184,0.7)" }}>Privacy</a>
+            <a href="#" style={{ color: "rgba(148,163,184,0.7)" }}>Terms</a>
+            <a href="#" style={{ color: "rgba(148,163,184,0.7)" }}>Licenses</a>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
+        }
+        @media (max-width: 560px) {
+          .footer-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </footer>
+  );
+}
+
+function FooterCol({ title, links }) {
+  return (
+    <div>
+      <div style={{ fontSize: 13, fontFamily: "var(--font-mono)", letterSpacing: ".12em", color: "rgba(148,163,184,0.7)", textTransform: "uppercase", marginBottom: 16 }}>{title}</div>
+      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+        {links.map(l => (
+          <li key={l}><a href="#" style={{ fontSize: 14, color: "rgba(203,213,225,0.85)", transition: "color .15s" }}
+            onMouseEnter={e => e.currentTarget.style.color = "#fff"}
+            onMouseLeave={e => e.currentTarget.style.color = "rgba(203,213,225,0.85)"}
+          >{l}</a></li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/* === Floating WhatsApp === */
+function WhatsAppFloat() {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <div style={{
+      position: "fixed", bottom: 24, right: 24, zIndex: 40,
+      display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 12,
+    }}>
+      {open && (
+        <div style={{
+          width: 280, padding: 16,
+          background: "#fff",
+          border: "1px solid var(--line)",
+          borderRadius: 18,
+          boxShadow: "0 20px 60px -10px rgba(0,0,0,0.2)",
+          animation: "popIn .25s ease",
+        }}>
+          <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 12 }}>
+            <div style={{
+              width: 40, height: 40, borderRadius: "50%",
+              background: "linear-gradient(135deg, #25D366, #128C7E)",
+              display: "grid", placeItems: "center", color: "#fff",
+            }}><Icon.WhatsApp size={20}/></div>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 600 }}>Logic Gate IT Support</div>
+              <div style={{ fontSize: 12, color: "#16A34A", display: "flex", alignItems: "center", gap: 6 }}>
+                <span className="live-dot" style={{ width: 6, height: 6 }}/> Online now
+              </div>
+            </div>
+          </div>
+          <p style={{ fontSize: 13, color: "var(--ink-2)", lineHeight: 1.5 }}>
+            Hi! Need help with a property? Send us a WhatsApp and a real human will reply in minutes.
+          </p>
+          <a href="#" className="btn btn-sm" style={{
+            marginTop: 12, width: "100%",
+            background: "#25D366", color: "#fff",
+            justifyContent: "center",
+          }}>Start chat <Icon.ArrowRight size={14}/></a>
+        </div>
+      )}
+      <button
+        onClick={() => setOpen(o => !o)}
+        aria-label="Open WhatsApp chat"
+        style={{
+          width: 56, height: 56, borderRadius: "50%",
+          background: "linear-gradient(135deg, #25D366, #128C7E)",
+          border: "none",
+          color: "#fff",
+          display: "grid", placeItems: "center",
+          boxShadow: "0 12px 30px -8px rgba(37,211,102,0.6)",
+          cursor: "pointer",
+          transition: "transform .2s",
+        }}
+        onMouseEnter={e => e.currentTarget.style.transform = "scale(1.06)"}
+        onMouseLeave={e => e.currentTarget.style.transform = ""}
+      >
+        {open ? <Icon.X size={22}/> : <Icon.WhatsApp size={26}/>}
+      </button>
+
+      <style>{`
+        @keyframes popIn {
+          from { opacity: 0; transform: translateY(10px) scale(.96); }
+          to { opacity: 1; transform: none; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+window.EmergencyCTA = EmergencyCTA;
+window.FAQ = FAQ;
+window.Contact = Contact;
+window.Footer = Footer;
+window.WhatsAppFloat = WhatsAppFloat;
