@@ -486,7 +486,7 @@ function Footer() {
               Efficiently active, Effectively creative.
             </p>
             <p style={{ marginTop: 16, fontSize: 14.5, color: "rgba(203,213,225,0.7)", maxWidth: 320, lineHeight: 1.6 }}>
-              Integrated property maintenance and technology solutions for residential and commercial portfolios across the Western US.
+              Property maintenance and technology solutions for residential and commercial portfolios across the Western US.
             </p>
             <div style={{ display: "flex", gap: 10, marginTop: 24 }}>
               {[

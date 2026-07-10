@@ -173,7 +173,7 @@ function Hero() {
               color: "#fff",
               fontWeight: 600,
             }}>
-              Integrated <span style={{
+              <span style={{
                 background: "linear-gradient(135deg, #60A5FA 0%, #93C5FD 60%, #F97316 130%)",
                 WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent",
               }}>Property &amp; Technology</span> Solutions
