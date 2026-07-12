@@ -226,6 +226,44 @@ function FAQ() {
   );
 }
 
+const EMAILJS_CONFIG = {
+  serviceId: "service_nqwt96j",
+  templateId: "template_me4wk3c",
+  publicKey: "eMjuuw6YW819vojso",
+};
+
+let emailjsReady = false;
+
+function ensureEmailJs() {
+  if (emailjsReady) return;
+  if (!window.emailjs) {
+    throw new Error("EmailJS SDK failed to load");
+  }
+  window.emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+  emailjsReady = true;
+}
+
+function sendInquiry(templateParams) {
+  ensureEmailJs();
+  return window.emailjs.send(
+    EMAILJS_CONFIG.serviceId,
+    EMAILJS_CONFIG.templateId,
+    templateParams
+  );
+}
+
+const emptyInquiry = {
+  form_type: "",
+  email: "",
+  phone: "",
+  company_name: "",
+  property_address: "",
+  service_needed: "",
+  software_needed: "",
+  timeline: "",
+  message: "",
+};
+
 /* === CONTACT === */
 function Contact() {
   const [form, setForm] = React.useState({ name: "", email: "", phone: "", service: "Plumbing", message: "" });
