@@ -85,6 +85,8 @@ uploads/*
 # Local development
 .local/
 .env.development
+.worktrees/
+.superpowers/
 
 # Backup Files
 *.bak
