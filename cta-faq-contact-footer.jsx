@@ -585,6 +585,68 @@ function Contact() {
   );
 }
 
+function Field({ label, v, onChange, placeholder, type = "text", required, textarea, full }) {
+  return (
+    <label style={{ display: "block", gridColumn: full ? "span 2" : "auto" }}>
+      <span style={{
+        fontSize: 12, fontFamily: "var(--font-mono)", letterSpacing: ".08em",
+        textTransform: "uppercase", color: "var(--ink-3)",
+        display: "block", marginBottom: 8,
+      }}>{label}{required && <span style={{ color: "var(--orange-500)" }}> *</span>}</span>
+      {textarea ? (
+        <textarea
+          value={v} onChange={onChange} placeholder={placeholder} required={required}
+          rows={5}
+          style={inputStyle}
+        />
+      ) : (
+        <input
+          type={type} value={v} onChange={onChange} placeholder={placeholder} required={required}
+          style={inputStyle}
+        />
+      )}
+    </label>
+  );
+}
+
+function SelectField({ label, v, onChange, options }) {
+  return (
+    <label style={{ display: "block" }}>
+      <span style={{
+        fontSize: 12, fontFamily: "var(--font-mono)", letterSpacing: ".08em",
+        textTransform: "uppercase", color: "var(--ink-3)",
+        display: "block", marginBottom: 8,
+      }}>{label}</span>
+      <div style={{ position: "relative" }}>
+        <select value={v} onChange={onChange} style={{
+          ...inputStyle, appearance: "none", paddingRight: 36,
+        }}>
+          {options.map(o => <option key={o} value={o}>{o}</option>)}
+        </select>
+        <span style={{
+          position: "absolute", right: 14, top: "50%",
+          transform: "translateY(-50%)", pointerEvents: "none",
+          color: "var(--ink-3)",
+        }}>▾</span>
+      </div>
+    </label>
+  );
+}
+
+const inputStyle = {
+  width: "100%",
+  padding: "12px 14px",
+  fontSize: 15,
+  fontFamily: "inherit",
+  color: "var(--navy-900)",
+  background: "var(--bg-2)",
+  border: "1px solid var(--line)",
+  borderRadius: 10,
+  outline: "none",
+  transition: "border-color .15s, background .15s",
+  resize: "vertical",
+};
+
 /* === FOOTER === */
 function Footer() {
   return (
