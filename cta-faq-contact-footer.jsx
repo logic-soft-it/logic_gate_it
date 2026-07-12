@@ -127,91 +127,101 @@ function EmergencyCTA() {
 }
 
 /* === FAQ === */
-const FAQS = [
-  { q: "What areas do you serve?", a: "We currently operate across 14 metros in the Western US — primary coverage in the Pacific Northwest, Bay Area, Southern California, Phoenix, Denver, and Salt Lake City. For multi-site portfolio contracts, we extend service nationally through our partner network." },
-  { q: "Do you provide 24/7 emergency services?", a: "Yes. Our emergency line is staffed every hour of every day, including holidays. Average on-site response is 28 minutes for properties under contract, and under 90 minutes for first-time callers." },
-  { q: "Are your technicians certified and insured?", a: "Every Logic Gate IT technician is licensed in their trade, OSHA-30 certified, background-checked, and covered under our $5M general liability policy. We're happy to send certificates of insurance per project." },
-  { q: "What software solutions do you offer?", a: "Logic Gate Cloud is our property operations platform — work order management, asset tracking, vendor coordination, tenant communications, and executive reporting. We also offer managed IT, cloud infrastructure, and bespoke integrations with Yardi, AppFolio, and Salesforce." },
-  { q: "Do you handle commercial properties?", a: "Roughly 70% of our portfolio is commercial — office, industrial, retail, and multi-family. We're equipped for high-rise mechanical systems, commercial kitchens, server rooms, and large-format landscape contracts." },
-  { q: "How do maintenance plans work?", a: "We start with a free site audit to inventory your assets and identify deferred maintenance. From there we build a quarterly preventative schedule with flat-rate pricing, plus 24/7 reactive coverage included." },
+const faqItems = [
+  {
+    section: "Property Maintenance",
+    items: [
+      { q: "What's your emergency response time?", a: "We aim for 24-28 minutes on average across our service territory. Call us anytime." },
+      { q: "Do you service my area?", a: "We operate across multiple regions. Contact us to confirm service availability at your location." },
+      { q: "How is pricing structured?", a: "We provide flat-rate quotes before any work begins. No surprise invoices or time-and-material surprises." },
+      { q: "Do you offer maintenance contracts?", a: "Yes. We offer preventative maintenance plans that reduce reactive calls by an average of 41% in year one." },
+      { q: "What trades do you cover?", a: "Plumbing, electrical, HVAC, roofing, landscaping, carpentry, painting, appliance repair, and more. See our full service list." },
+    ]
+  },
+  {
+    section: "Software Solutions",
+    items: [
+      { q: "How long does a project take?", a: "Depends on scope. Most projects ship in 4-12 weeks. We move fast — agile sprints, quick iterations." },
+      { q: "What's your development process?", a: "We follow agile methodology: discovery → design → sprint-based development → testing → launch → ongoing support." },
+      { q: "How is pricing structured?", a: "Fixed-scope projects with transparent pricing. We quote upfront. No hidden fees or surprise invoices." },
+      { q: "Do you provide support after launch?", a: "Yes. We offer ongoing support packages. You're not on your own after we ship." },
+      { q: "What technologies do you use?", a: "We use modern stacks: React, Node.js, Python, mobile frameworks (iOS/Android), cloud hosting (AWS/Azure), and more." },
+      { q: "Can you integrate with existing systems?", a: "Yes. We specialize in bi-directional sync and API integrations with common platforms like Salesforce, QuickBooks, and more." },
+    ]
+  },
 ];
 
 function FAQ() {
-  const [open, setOpen] = React.useState(0);
+  const [open, setOpen] = React.useState({});
+  const toggleOpen = (sectionIdx, itemIdx) => {
+    const key = `${sectionIdx}-${itemIdx}`;
+    setOpen(o => ({ ...o, [key]: !o[key] }));
+  };
 
   return (
     <section className="section" style={{ background: "var(--bg)" }}>
-      <div className="container" style={{ maxWidth: 880 }}>
+      <div className="container">
         <div className="section-head">
           <div className="eyebrow" style={{ margin: "0 auto" }}><span className="dot"/> Questions</div>
           <h2>Frequently asked.</h2>
-          <p>If your question isn't here, our team will give you a real answer over the phone — usually within the same business day.</p>
+          <p>Questions about either division? Our team will give you a real answer — usually within the same business day.</p>
         </div>
 
         <div style={{
-          background: "var(--bg-2)",
-          border: "1px solid var(--line)",
-          borderRadius: 20,
-          overflow: "hidden",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 40,
+          marginTop: 40,
         }}>
-          {FAQS.map((f, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={i} style={{
-                borderBottom: i < FAQS.length - 1 ? "1px solid var(--line)" : "none",
+          {faqItems.map((section, sIdx) => (
+            <div key={sIdx}>
+              <h3 style={{
+                fontSize: 20,
+                fontWeight: 600,
+                color: "var(--navy-900)",
+                marginBottom: 24,
               }}>
-                <button
-                  onClick={() => setOpen(isOpen ? -1 : i)}
-                  aria-expanded={isOpen}
-                  style={{
-                    width: "100%",
-                    display: "flex", alignItems: "center", justifyContent: "space-between",
-                    gap: 16,
-                    padding: "24px 28px",
-                    background: "transparent",
-                    border: "none",
-                    textAlign: "left",
-                    cursor: "pointer",
-                    fontFamily: "var(--font-display)",
-                    fontSize: 18,
-                    fontWeight: 500,
-                    color: "var(--navy-900)",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  <span>{f.q}</span>
-                  <span style={{
-                    width: 32, height: 32, borderRadius: 8,
-                    background: isOpen ? "var(--navy-900)" : "#fff",
-                    color: isOpen ? "#fff" : "var(--ink-2)",
-                    border: "1px solid " + (isOpen ? "var(--navy-900)" : "var(--line)"),
-                    display: "grid", placeItems: "center",
-                    transition: "all .2s",
-                    flexShrink: 0,
-                  }}>
-                    {isOpen ? <Icon.Minus size={16}/> : <Icon.Plus size={16}/>}
-                  </span>
-                </button>
-                <div style={{
-                  display: "grid",
-                  gridTemplateRows: isOpen ? "1fr" : "0fr",
-                  transition: "grid-template-rows .3s ease",
-                }}>
-                  <div style={{ overflow: "hidden" }}>
-                    <div style={{
-                      padding: "0 28px 24px",
-                      color: "var(--ink-2)",
-                      fontSize: 15.5,
-                      lineHeight: 1.6,
-                      maxWidth: 720,
-                    }}>{f.a}</div>
-                  </div>
-                </div>
+                {section.section}
+              </h3>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                {section.items.map((item, iIdx) => {
+                  const isOpen = open[`${sIdx}-${iIdx}`];
+                  return (
+                    <details key={iIdx} style={{
+                      border: "1px solid var(--line)",
+                      borderRadius: 12,
+                      padding: 16,
+                      cursor: "pointer",
+                    }}>
+                      <summary style={{
+                        fontSize: 15,
+                        fontWeight: 600,
+                        color: "var(--navy-900)",
+                        outline: "none",
+                      }}>
+                        {item.q}
+                      </summary>
+                      <p style={{
+                        fontSize: 14,
+                        color: "var(--ink-2)",
+                        marginTop: 12,
+                        lineHeight: 1.6,
+                      }}>
+                        {item.a}
+                      </p>
+                    </details>
+                  );
+                })}
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
+      <style>{`
+        @media (max-width: 900px) {
+          .faq-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 }
