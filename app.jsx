@@ -91,10 +91,10 @@ function App() {
         <WhyChooseUs/>
         <About/>
         <SoftwareSolutions/>
-        <Projects/>
-        <Testimonials/>
+        {/* <Projects/> */}
+        {/* <Testimonials/> */}
         <EmergencyCTA/>
-        <Careers onOpenJob={setOpenJob}/>
+        {/* <Careers onOpenJob={setOpenJob}/> */}
         <FAQ/>
         <Contact/>
       </main>
