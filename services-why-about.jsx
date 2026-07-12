@@ -44,12 +44,12 @@ const MAINTENANCE_SUBS = [
 ];
 
 const SOFTWARE_SERVICES = [
-  { key: "managed-it",     title: "Managed IT",            desc: "End-to-end IT management — endpoints, networks, M365, identity, and security monitoring.",                I: "Cpu",       accent: "#60A5FA" },
-  { key: "cloud",          title: "Cloud Infrastructure",  desc: "AWS / Azure architecture, migrations, hardening, and 24×7 monitoring with managed backups.",              I: "Cloud",     accent: "#60A5FA" },
-  { key: "custom-software",title: "Custom Software",       desc: "Bespoke web and mobile apps — internal tools, property platforms, dashboards built to your workflow.",     I: "Code",      accent: "#F97316" },
-  { key: "helpdesk",       title: "IT Helpdesk",           desc: "Tiered helpdesk with SLA-backed response. Phone, email, chat, and on-site dispatch.",                       I: "Headset",   accent: "#60A5FA" },
-  { key: "cybersecurity",  title: "Cybersecurity",         desc: "Vulnerability scans, penetration testing, MDR, and compliance support (SOC 2, HIPAA).",                    I: "Shield",    accent: "#A78BFA" },
-  { key: "integrations",   title: "ERP / CRM Integration", desc: "Bi-directional sync with Yardi, AppFolio, Salesforce, QuickBooks. Custom APIs and ETL pipelines.",         I: "Layers",    accent: "#F97316" },
+  { key: "crm", title: "Custom CRM", desc: "Centralize customer data. Automate workflows. Designed for hotels, schools, and service businesses.", I: "Users", accent: "#2563EB" },
+  { key: "erp", title: "ERP Solutions", desc: "Enterprise resource planning integrated with your operations. Streamline processes across departments.", I: "Layers", accent: "#F97316" },
+  { key: "ecommerce", title: "E-commerce", desc: "Custom online stores with payment integration, inventory management, and scaling capabilities.", I: "ShoppingCart", accent: "#2563EB" },
+  { key: "mobile", title: "Mobile Software", desc: "iOS and Android apps built to your exact specifications. Offline-capable, fast, reliable.", I: "Smartphone", accent: "#F97316" },
+  { key: "custom", title: "Custom Software", desc: "Bespoke applications and internal tools tailored to your unique workflow and challenges.", I: "Code", accent: "#2563EB" },
+  { key: "cybersecurity", title: "Cybersecurity Support", desc: "Security audits, vulnerability management, compliance support, and ongoing threat monitoring.", I: "Shield", accent: "#A78BFA" },
 ];
 
 function ServiceCard({ s, variant = "light" }) {
@@ -374,6 +374,95 @@ function DivisionHeader({ id, tag, title, subtitle, accent, variant = "light" })
   );
 }
 
+/* === SOFTWARE SOLUTIONS === */
+function SoftwareSolutions() {
+  return (
+    <section id="software-solutions" style={{
+      position: "relative",
+      padding: "96px 0",
+      background: "linear-gradient(180deg, #0F172A 0%, #0B1220 100%)",
+      color: "#E2E8F0",
+      overflow: "hidden",
+    }}>
+      {/* Background grid + glows */}
+      <div className="bg-grid-dark" style={{
+        position: "absolute", inset: 0,
+        maskImage: "radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 80%)",
+        WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 80%)",
+      }}/>
+      <div style={{
+        position: "absolute", top: "10%", right: "-10%", width: 500, height: 500,
+        background: "radial-gradient(circle, rgba(249,115,22,0.25), transparent 65%)",
+        filter: "blur(90px)", pointerEvents: "none",
+      }}/>
+      <div style={{
+        position: "absolute", bottom: "-10%", left: "-5%", width: 400, height: 400,
+        background: "radial-gradient(circle, rgba(37,99,235,0.30), transparent 65%)",
+        filter: "blur(80px)", pointerEvents: "none",
+      }}/>
+
+      <div className="container" style={{ position: "relative" }}>
+        {/* Header */}
+        <div style={{
+          display: "flex", alignItems: "flex-end", justifyContent: "space-between",
+          gap: 32, flexWrap: "wrap", marginBottom: 40,
+          paddingBottom: 24,
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
+        }}>
+          <div style={{ maxWidth: 640 }}>
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 10,
+              padding: "5px 12px", borderRadius: 999,
+              background: "#F9731620",
+              border: "1px solid #F9731655",
+              color: "#F97316",
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              letterSpacing: ".14em", textTransform: "uppercase",
+              marginBottom: 16,
+            }}>
+              <span style={{
+                width: 6, height: 6, borderRadius: "50%",
+                background: "#F97316", boxShadow: "0 0 0 4px #F9731633",
+              }}/>
+              Division 02
+            </div>
+            <h2 style={{
+              fontSize: "clamp(32px, 3.6vw, 48px)",
+              fontWeight: 600, letterSpacing: "-0.02em",
+              color: "#fff", marginBottom: 10,
+            }}>Custom Software Solutions</h2>
+            <p style={{
+              fontSize: 16, lineHeight: 1.6,
+              color: "rgba(203,213,225,0.8)",
+            }}>
+              Fast delivery. Affordable. Custom-built. We build the software your business actually needs.
+            </p>
+          </div>
+          <a href="#contact" className="btn btn-ghost-dark btn-sm">
+            Request consultation <Icon.ArrowRight size={14}/>
+          </a>
+        </div>
+
+        {/* Services Grid */}
+        <div className="services-grid" style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: 16,
+          marginBottom: 80,
+        }}>
+          {SOFTWARE_SERVICES.map(s => <ServiceCard key={s.key} s={s} variant="dark"/>)}
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 820px) {
+          .services-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
 /* === WHY CHOOSE US (dark) === */
 function WhyChooseUs() {
   const items = [
@@ -606,6 +695,7 @@ function About() {
 
 window.Divisions = Divisions;
 window.Services = Services;
+window.SoftwareSolutions = SoftwareSolutions;
 window.WhyChooseUs = WhyChooseUs;
 window.About = About;
 window.MAINTENANCE_SERVICES = MAINTENANCE_SERVICES;
