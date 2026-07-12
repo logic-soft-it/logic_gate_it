@@ -233,107 +233,154 @@ function Contact() {
       <div className="container">
         <div className="section-head left" style={{ textAlign: "left", maxWidth: 720 }}>
           <div className="eyebrow"><span className="dot"/> Contact</div>
-          <h2 style={{ fontSize: "clamp(36px, 4.4vw, 56px)" }}>Let's talk about your property.</h2>
-          <p>Send us a note or call directly. For active emergencies, please use the 24/7 line — we'll get to you faster.</p>
+          <h2 style={{ fontSize: "clamp(36px, 4.4vw, 56px)" }}>Let's work together</h2>
+          <p>Whether you need property maintenance or custom software, we're here to help.</p>
         </div>
 
-        <div className="contact-grid" style={{
-          display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 32,
+        <div className="contact-forms" style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 40,
+          marginTop: 40,
         }}>
-          {/* LEFT — info */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <div className="card" style={{
-              background: "var(--navy-900)", color: "#fff",
-              border: "1px solid rgba(255,255,255,0.08)",
-              padding: 28,
-              position: "relative", overflow: "hidden",
-            }}>
-              <div style={{
-                position: "absolute", top: -40, right: -40, width: 200, height: 200,
-                background: "radial-gradient(circle, rgba(37,99,235,0.4), transparent 70%)",
-                filter: "blur(40px)",
-              }}/>
-              <Icon.Phone size={24} stroke="#60A5FA"/>
-              <div style={{ fontSize: 12, color: "rgba(148,163,184,0.8)", marginTop: 14, fontFamily: "var(--font-mono)", letterSpacing: ".08em" }}>CALL US</div>
-              <div style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 600, marginTop: 4 }}>1-800-555-LGIT</div>
-              <div style={{ fontSize: 13, color: "rgba(148,163,184,0.9)", marginTop: 6 }}>Emergency line · 24/7/365</div>
-            </div>
-
-            {[
-              { I: "Mail",  l: "Email",   v: "hello@logicgateit.com",         s: "Reply within 1 business hour" },
-              { I: "MapPin",l: "Office",  v: "1420 SE Industrial Way",      s: "Portland, OR 97214" },
-              { I: "Clock", l: "Hours",   v: "Mon–Fri · 7am – 7pm PT",     s: "Saturday · 8am – 4pm" },
-            ].map(c => {
-              const IconCmp = Icon[c.I];
-              return (
-                <div key={c.l} className="card" style={{ padding: 22, display: "flex", gap: 14, alignItems: "flex-start" }}>
-                  <div style={{
-                    width: 40, height: 40, borderRadius: 10,
-                    background: "rgba(37,99,235,0.08)",
-                    display: "grid", placeItems: "center",
-                    flexShrink: 0,
-                  }}><IconCmp size={20} stroke="var(--blue-600)"/></div>
-                  <div>
-                    <div style={{ fontSize: 12, fontFamily: "var(--font-mono)", letterSpacing: ".08em", color: "var(--ink-3)", textTransform: "uppercase" }}>{c.l}</div>
-                    <div style={{ fontWeight: 600, fontSize: 16, marginTop: 4 }}>{c.v}</div>
-                    <div style={{ fontSize: 13, color: "var(--ink-2)", marginTop: 2 }}>{c.s}</div>
-                  </div>
-                </div>
-              );
-            })}
-
-            {/* Map placeholder */}
-            <div style={{
-              borderRadius: 16, overflow: "hidden",
-              border: "1px solid var(--line)",
-              position: "relative", height: 200,
-              background: `
-                linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%)
-              `,
-            }}>
-              {/* fake map grid */}
-              <div style={{
-                position: "absolute", inset: 0,
-                backgroundImage: `
-                  linear-gradient(rgba(100,116,139,0.25) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(100,116,139,0.25) 1px, transparent 1px)
-                `,
-                backgroundSize: "32px 32px",
-              }}/>
-              {/* fake roads */}
-              <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 400 200" preserveAspectRatio="none">
-                <path d="M0,80 Q150,60 200,100 T400,120" stroke="rgba(100,116,139,0.5)" strokeWidth="3" fill="none"/>
-                <path d="M50,0 L120,200" stroke="rgba(100,116,139,0.4)" strokeWidth="2" fill="none"/>
-                <path d="M280,0 L320,200" stroke="rgba(100,116,139,0.4)" strokeWidth="2" fill="none"/>
-              </svg>
-              {/* pin */}
-              <div style={{
-                position: "absolute", top: "45%", left: "50%", transform: "translate(-50%, -100%)",
-                display: "flex", flexDirection: "column", alignItems: "center", gap: 4,
-              }}>
-                <div style={{
-                  background: "var(--navy-900)", color: "#fff",
-                  padding: "6px 12px", borderRadius: 8,
-                  fontSize: 12, fontWeight: 500,
-                  boxShadow: "var(--shadow)",
-                }}>Logic Gate IT HQ</div>
-                <div style={{
-                  width: 18, height: 18, borderRadius: "50% 50% 50% 0",
-                  background: "var(--orange-500)",
-                  transform: "rotate(-45deg)",
-                  border: "3px solid #fff",
-                  boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+          {/* LEFT: Property Maintenance Form */}
+          <div>
+            <h3 style={{ fontSize: 22, fontWeight: 600, color: "var(--navy-900)", marginBottom: 20 }}>
+              Property Maintenance
+            </h3>
+            <form style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              <div>
+                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
+                  Property Address
+                </label>
+                <input type="text" placeholder="123 Main St, City, State" style={{
+                  width: "100%", padding: "10px 14px", borderRadius: 8,
+                  border: "1px solid var(--line)", fontSize: 14,
+                  fontFamily: "var(--font-body)",
                 }}/>
               </div>
-            </div>
+              <div>
+                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
+                  Service Needed
+                </label>
+                <select style={{
+                  width: "100%", padding: "10px 14px", borderRadius: 8,
+                  border: "1px solid var(--line)", fontSize: 14,
+                  fontFamily: "var(--font-body)",
+                }}>
+                  <option>Select a service...</option>
+                  <option>Plumbing</option>
+                  <option>Electrical</option>
+                  <option>HVAC</option>
+                  <option>Roofing</option>
+                  <option>Landscaping</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
+                  Contact Email
+                </label>
+                <input type="email" placeholder="you@company.com" style={{
+                  width: "100%", padding: "10px 14px", borderRadius: 8,
+                  border: "1px solid var(--line)", fontSize: 14,
+                  fontFamily: "var(--font-body)",
+                }}/>
+              </div>
+              <div>
+                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
+                  Phone
+                </label>
+                <input type="tel" placeholder="(555) 123-4567" style={{
+                  width: "100%", padding: "10px 14px", borderRadius: 8,
+                  border: "1px solid var(--line)", fontSize: 14,
+                  fontFamily: "var(--font-body)",
+                }}/>
+              </div>
+              <button type="submit" className="btn btn-primary" style={{
+                marginTop: 8,
+              }}>
+                Schedule Consultation <Icon.ArrowRight size={16}/>
+              </button>
+            </form>
           </div>
 
-          {/* RIGHT — form */}
-          <form onSubmit={submit} className="card" style={{
-            padding: 36,
-            background: "#fff",
-            position: "relative",
-          }}>
+          {/* RIGHT: Software Solutions Form */}
+          <div>
+            <h3 style={{ fontSize: 22, fontWeight: 600, color: "var(--navy-900)", marginBottom: 20 }}>
+              Custom Software Solutions
+            </h3>
+            <form style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              <div>
+                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
+                  What software do you need?
+                </label>
+                <select style={{
+                  width: "100%", padding: "10px 14px", borderRadius: 8,
+                  border: "1px solid var(--line)", fontSize: 14,
+                  fontFamily: "var(--font-body)",
+                }}>
+                  <option>Select a solution...</option>
+                  <option>Custom CRM</option>
+                  <option>ERP Solutions</option>
+                  <option>E-commerce</option>
+                  <option>Mobile App</option>
+                  <option>Custom Software</option>
+                  <option>Cybersecurity</option>
+                </select>
+              </div>
+              <div>
+                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
+                  Company Name
+                </label>
+                <input type="text" placeholder="Your Company" style={{
+                  width: "100%", padding: "10px 14px", borderRadius: 8,
+                  border: "1px solid var(--line)", fontSize: 14,
+                  fontFamily: "var(--font-body)",
+                }}/>
+              </div>
+              <div>
+                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
+                  Contact Email
+                </label>
+                <input type="email" placeholder="you@company.com" style={{
+                  width: "100%", padding: "10px 14px", borderRadius: 8,
+                  border: "1px solid var(--line)", fontSize: 14,
+                  fontFamily: "var(--font-body)",
+                }}/>
+              </div>
+              <div>
+                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
+                  Project Timeline
+                </label>
+                <select style={{
+                  width: "100%", padding: "10px 14px", borderRadius: 8,
+                  border: "1px solid var(--line)", fontSize: 14,
+                  fontFamily: "var(--font-body)",
+                }}>
+                  <option>Select timeline...</option>
+                  <option>ASAP (1-2 weeks)</option>
+                  <option>Within a month</option>
+                  <option>Within 3 months</option>
+                  <option>6+ months</option>
+                </select>
+              </div>
+              <button type="submit" className="btn btn-primary" style={{
+                marginTop: 8,
+              }}>
+                Request Consultation <Icon.ArrowRight size={16}/>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* Old form structure kept for reference but commented out */}
+        <form onSubmit={submit} className="card" style={{
+          padding: 36,
+          background: "#fff",
+          position: "relative",
+          display: "none",
+        }}>
             <div className="form-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
               <Field label="Full name" v={form.name} onChange={set("name")} placeholder="Your name" required/>
               <Field label="Email"     v={form.email} onChange={set("email")} placeholder="you@company.com" type="email" required/>
