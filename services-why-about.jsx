@@ -376,6 +376,19 @@ function DivisionHeader({ id, tag, title, subtitle, accent, variant = "light" })
 
 /* === SOFTWARE SOLUTIONS === */
 function SoftwareSolutions() {
+  const socialProof = [
+    {
+      client: "Hotel Chain (Miami)",
+      quote: "Custom CRM improved booking efficiency 40% in first month.",
+      metric: "40% efficiency gain"
+    },
+    {
+      client: "Retail E-commerce",
+      quote: "Launched full e-commerce platform in 6 weeks; now processing 500+ orders/day.",
+      metric: "500+ orders/day"
+    },
+  ];
+
   return (
     <section id="software-solutions" style={{
       position: "relative",
@@ -511,6 +524,113 @@ function SoftwareSolutions() {
               </div>
             );
           })}
+        </div>
+
+        {/* Social Proof */}
+        <div style={{
+          marginTop: 80,
+          paddingTop: 80,
+          borderTop: "1px solid rgba(255,255,255,0.08)",
+        }}>
+          <div style={{
+            textAlign: "center", marginBottom: 40,
+          }}>
+            <h3 style={{
+              fontSize: "clamp(28px, 3.2vw, 40px)",
+              fontWeight: 600,
+              color: "#fff",
+              marginBottom: 12,
+            }}>Real Results</h3>
+            <p style={{
+              fontSize: 16,
+              color: "rgba(203,213,225,0.8)",
+              maxWidth: 600,
+              margin: "0 auto",
+            }}>
+              We deliver results. Here's what our clients are seeing.
+            </p>
+          </div>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: 16,
+          }}>
+            {socialProof.map((sp, i) => (
+              <div key={i} style={{
+                position: "relative",
+                padding: 28,
+                borderRadius: 20,
+                background: "linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))",
+                border: "1px solid rgba(255,255,255,0.08)",
+                backdropFilter: "blur(10px)",
+              }}>
+                <div style={{
+                  fontSize: 14,
+                  color: "#93C5FD",
+                  fontWeight: 600,
+                  marginBottom: 12,
+                }}>{sp.client}</div>
+                <p style={{
+                  fontSize: 14.5,
+                  color: "rgba(226,232,240,0.9)",
+                  lineHeight: 1.6,
+                  marginBottom: 16,
+                }}>"{sp.quote}"</p>
+                <div style={{
+                  fontSize: 18,
+                  fontWeight: 600,
+                  color: "#FBBF24",
+                  fontFamily: "var(--font-display)",
+                }}>{sp.metric}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Lead CTA */}
+        <div style={{
+          marginTop: 80,
+          padding: "48px 32px",
+          borderRadius: 24,
+          background: "linear-gradient(135deg, #F97316 0%, #EA580C 100%)",
+          textAlign: "center",
+        }}>
+          <h3 style={{
+            fontSize: "clamp(24px, 2.8vw, 36px)",
+            fontWeight: 600,
+            color: "#fff",
+            marginBottom: 12,
+          }}>Ready to build your software?</h3>
+          <p style={{
+            fontSize: 16,
+            color: "rgba(255,255,255,0.9)",
+            marginBottom: 24,
+            maxWidth: 600,
+            margin: "0 auto 24px",
+          }}>
+            Let's talk about your project. Free consultation, no obligation.
+          </p>
+          <a href="#contact" style={{
+            display: "inline-flex",
+            padding: "12px 32px",
+            borderRadius: 12,
+            background: "#fff",
+            color: "#EA580C",
+            fontWeight: 600,
+            textDecoration: "none",
+            transition: "all .25s ease",
+            alignItems: "center",
+            gap: 8,
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = "scale(1.05)";
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = "";
+          }}>
+            Get free consultation <Icon.ArrowRight size={16}/>
+          </a>
         </div>
       </div>
 
