@@ -733,11 +733,10 @@ function WhyChooseUs() {
 /* === ABOUT === */
 function About() {
   const milestones = [
-    { year: "2012", t: "Founded as a managed IT shop serving local property managers." },
-    { year: "2016", t: "Expanded into electrical and HVAC under a unified service contract." },
-    { year: "2020", t: "Launched the Logic Gate Cloud property operations platform." },
-    { year: "2023", t: "Crossed 500 active commercial and residential accounts." },
-    { year: "2026", t: "Operating across 14 metros with 200+ certified technicians." },
+    { year: "2023", t: "Founded Logic Gate IT as a software development shop." },
+    { year: "2024", t: "Launched first major CRM for hospitality clients; expanded to e-commerce." },
+    { year: "2025", t: "Added ERP solutions and cybersecurity support; growing team." },
+    { year: "2026", t: "Now serving 50+ SMBs and enterprises across multiple industries." },
   ];
 
   return (
@@ -760,7 +759,7 @@ function About() {
               <span style={{ opacity: .5, marginTop: 6 }}>Logic Gate IT technicians on-site, 4:5</span>
             </div>
 
-            {/* Floating cert card */}
+            {/* Achievement card */}
             <div className="card" style={{
               position: "absolute",
               bottom: -28, right: -20,
@@ -769,21 +768,18 @@ function About() {
               maxWidth: 240,
               background: "#fff",
             }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                 <div style={{
                   width: 36, height: 36, borderRadius: 10,
-                  background: "linear-gradient(135deg, #2563EB, #1D4FCB)",
+                  background: "linear-gradient(135deg, #F97316, #EA580C)",
                   display: "grid", placeItems: "center",
-                }}><Icon.Shield size={18} stroke="#fff"/></div>
+                }}><Icon.Sparkle size={18} stroke="#fff"/></div>
                 <div>
-                  <div style={{ fontSize: 13, fontWeight: 600 }}>ISO 9001:2015</div>
-                  <div style={{ fontSize: 11, color: "var(--ink-3)", fontFamily: "var(--font-mono)" }}>Quality certified</div>
+                  <div style={{ fontSize: 13, fontWeight: 600 }}>50+ Projects</div>
+                  <div style={{ fontSize: 11, color: "var(--ink-3)", fontFamily: "var(--font-mono)" }}>Delivered</div>
                 </div>
               </div>
-              <div style={{ display: "flex", gap: 2 }}>
-                {Array.from({length:5}).map((_,i) => <Icon.Star key={i} size={14} stroke="#F97316" fill="#F97316"/>)}
-              </div>
-              <div style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 4 }}>4.9 / 5 · 2,400+ reviews</div>
+              <div style={{ fontSize: 11, color: "var(--ink-3)" }}>Trusted by SMBs & enterprises</div>
             </div>
 
             <div className="card" style={{
@@ -795,9 +791,9 @@ function About() {
               color: "#fff",
               border: "1px solid rgba(255,255,255,0.08)",
             }}>
-              <div style={{ fontSize: 11, color: "rgba(148,163,184,0.8)", fontFamily: "var(--font-mono)", letterSpacing: ".08em" }}>SINCE 2012</div>
-              <div style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 600, marginTop: 2 }}>14 years</div>
-              <div style={{ fontSize: 11, color: "rgba(148,163,184,0.8)" }}>of trusted service</div>
+              <div style={{ fontSize: 11, color: "rgba(148,163,184,0.8)", fontFamily: "var(--font-mono)", letterSpacing: ".08em" }}>FOUNDED 2023</div>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 600, marginTop: 2 }}>3 years</div>
+              <div style={{ fontSize: 11, color: "rgba(148,163,184,0.8)" }}>of building great software</div>
             </div>
           </div>
 
@@ -805,15 +801,15 @@ function About() {
           <div>
             <div className="eyebrow"><span className="dot"/> About Logic Gate IT</div>
             <h2 style={{ fontSize: "clamp(32px, 3.6vw, 48px)", marginTop: 20 }}>
-              We treat your property like infrastructure — because that's what it is.
+              Three years building software that actually works.
             </h2>
             <p style={{ fontSize: 15, color: "var(--blue-600)", fontFamily: "var(--font-mono)", marginTop: 12, letterSpacing: "0.04em" }}>
               "Efficiently active, Effectively creative."
             </p>
             <p style={{ color: "var(--ink-2)", fontSize: 17, marginTop: 16, lineHeight: 1.65 }}>
-              Logic Gate IT started as a small IT services shop and grew into a full-stack operations partner —
-              one team that handles the wiring under the floor and the software in the cloud. We coordinate
-              every trade in-house, run the platform that ties it together, and answer the phone when something breaks.
+              We started as a lean software development team solving real problems for hospitality, retail, and enterprise clients.
+              Three years later, we've built CRMs, e-commerce platforms, ERPs, and mobile apps — all fast, all affordable, all custom.
+              We don't do templates. We solve your problem.
             </p>
 
             <div style={{
@@ -821,8 +817,8 @@ function About() {
               marginTop: 32,
             }}>
               {[
-                { I: "Users", t: "Customer-first", d: "Dedicated account managers, not call centers." },
-                { I: "Sparkle", t: "Quality commitment", d: "Every job carries a 2-year workmanship warranty." },
+                { I: "Zap", t: "Fast delivery", d: "We ship in weeks. Agile process, quick iterations." },
+                { I: "Sparkle", t: "Quality you trust", d: "Real support after launch. We stand behind our code." },
               ].map((b, i) => {
                 const IconCmp = Icon[b.I];
                 return (
