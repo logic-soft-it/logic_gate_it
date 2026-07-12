@@ -50,7 +50,7 @@ function StickyMobileCTA() {
       display: "none",
       gap: 8,
     }}>
-      <a href="tel:+18005551234" className="btn btn-ghost" style={{ flex: 1, justifyContent: "center" }}>
+      <a href="tel:+8801907060476" className="btn btn-ghost" style={{ flex: 1, justifyContent: "center" }}>
         <Icon.Phone size={14}/> Call
       </a>
       <a href="#contact" className="btn btn-primary" style={{ flex: 2, justifyContent: "center" }}>

@@ -731,12 +731,201 @@ function WhyChooseUs() {
 }
 
 /* === ABOUT === */
+function AboutVisual() {
+  return (
+    <div style={{ position: "relative" }}>
+      <div
+        className="about-visual"
+        aria-hidden="true"
+        style={{
+          aspectRatio: "4/5",
+          borderRadius: 24,
+          overflow: "hidden",
+          position: "relative",
+          background: "linear-gradient(165deg, #0F172A 0%, #1E293B 48%, #0B1220 100%)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          boxShadow: "var(--shadow-lg)",
+        }}
+      >
+        {/* Atmosphere */}
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: `
+            linear-gradient(rgba(37,99,235,0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37,99,235,0.08) 1px, transparent 1px)
+          `,
+          backgroundSize: "28px 28px",
+          maskImage: "radial-gradient(ellipse at 50% 40%, black 20%, transparent 75%)",
+        }}/>
+        <div style={{
+          position: "absolute",
+          width: 280, height: 280, borderRadius: "50%",
+          top: "12%", left: "8%",
+          background: "radial-gradient(circle, rgba(37,99,235,0.35) 0%, transparent 70%)",
+          filter: "blur(8px)",
+          animation: "aboutGlow 7s ease-in-out infinite",
+        }}/>
+        <div style={{
+          position: "absolute",
+          width: 220, height: 220, borderRadius: "50%",
+          bottom: "18%", right: "4%",
+          background: "radial-gradient(circle, rgba(249,115,22,0.28) 0%, transparent 70%)",
+          filter: "blur(8px)",
+          animation: "aboutGlow 7s ease-in-out infinite 1.5s",
+        }}/>
+
+        {/* Dual-path composition */}
+        <div style={{
+          position: "relative",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "48px 28px 56px",
+          gap: 18,
+        }}>
+          <div style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: 11,
+            letterSpacing: ".14em",
+            textTransform: "uppercase",
+            color: "rgba(147,197,253,0.85)",
+            marginBottom: 4,
+          }}>
+            Two divisions · One company
+          </div>
+
+          {/* Property lane */}
+          <div style={{
+            display: "flex", alignItems: "center", gap: 14,
+            padding: "16px 18px",
+            borderRadius: 16,
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            backdropFilter: "blur(10px)",
+            animation: "aboutFloat 6s ease-in-out infinite",
+          }}>
+            <div style={{
+              width: 44, height: 44, borderRadius: 12, flexShrink: 0,
+              background: "linear-gradient(135deg, #2563EB, #1D4ED8)",
+              display: "grid", placeItems: "center",
+              boxShadow: "0 10px 24px -10px rgba(37,99,235,0.8)",
+            }}>
+              <Icon.Building size={22} stroke="#fff"/>
+            </div>
+            <div>
+              <div style={{ fontSize: 15, fontWeight: 600, color: "#F8FAFC" }}>Property Maintenance</div>
+              <div style={{ fontSize: 12.5, color: "rgba(203,213,225,0.75)", marginTop: 2 }}>Where we started — still active today</div>
+            </div>
+          </div>
+
+          {/* Connector */}
+          <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "0 8px" }}>
+            <div style={{
+              width: 2, height: 28, marginLeft: 21,
+              background: "linear-gradient(180deg, #2563EB, #F97316)",
+              borderRadius: 2,
+            }}/>
+            <span style={{
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              letterSpacing: ".08em", color: "rgba(148,163,184,0.9)",
+            }}>
+              CEO vision → software
+            </span>
+          </div>
+
+          {/* Software lane */}
+          <div style={{
+            display: "flex", alignItems: "center", gap: 14,
+            padding: "16px 18px",
+            borderRadius: 16,
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            backdropFilter: "blur(10px)",
+            animation: "aboutFloat 6s ease-in-out infinite 0.8s",
+          }}>
+            <div style={{
+              width: 44, height: 44, borderRadius: 12, flexShrink: 0,
+              background: "linear-gradient(135deg, #F97316, #EA580C)",
+              display: "grid", placeItems: "center",
+              boxShadow: "0 10px 24px -10px rgba(249,115,22,0.8)",
+            }}>
+              <Icon.Code size={22} stroke="#fff"/>
+            </div>
+            <div>
+              <div style={{ fontSize: 15, fontWeight: 600, color: "#F8FAFC" }}>Software & IT</div>
+              <div style={{ fontSize: 12.5, color: "rgba(203,213,225,0.75)", marginTop: 2 }}>Growing — open for any IT support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating proof cards — keep as interaction-free overlays */}
+      <div className="card" style={{
+        position: "absolute",
+        bottom: -28, right: -20,
+        padding: 18,
+        boxShadow: "var(--shadow-lg)",
+        maxWidth: 240,
+        background: "#fff",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+          <div style={{
+            width: 36, height: 36, borderRadius: 10,
+            background: "linear-gradient(135deg, #F97316, #EA580C)",
+            display: "grid", placeItems: "center",
+          }}><Icon.Sparkle size={18} stroke="#fff"/></div>
+          <div>
+            <div style={{ fontSize: 13, fontWeight: 600 }}>Hotel CRM</div>
+            <div style={{ fontSize: 11, color: "var(--ink-3)", fontFamily: "var(--font-mono)" }}>Launched this year</div>
+          </div>
+        </div>
+        <div style={{ fontSize: 11, color: "var(--ink-3)" }}>Our first hospitality product</div>
+      </div>
+
+      <div className="card" style={{
+        position: "absolute",
+        top: -20, left: -16,
+        padding: 14,
+        boxShadow: "var(--shadow-lg)",
+        background: "var(--navy-900)",
+        color: "#fff",
+        border: "1px solid rgba(255,255,255,0.08)",
+      }}>
+        <div style={{ fontSize: 11, color: "rgba(148,163,184,0.8)", fontFamily: "var(--font-mono)", letterSpacing: ".08em" }}>PROPERTY PARTNERS</div>
+        <div style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 600, marginTop: 2 }}>5+ LLCs</div>
+        <div style={{ fontSize: 11, color: "rgba(148,163,184,0.8)" }}>working with us today</div>
+      </div>
+
+      <style>{`
+        @keyframes aboutFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+        @keyframes aboutGlow {
+          0%, 100% { opacity: 0.7; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.08); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .about-visual, .about-visual * {
+            animation: none !important;
+          }
+        }
+        @media (max-width: 900px) {
+          .about-visual { aspect-ratio: 5/4 !important; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 function About() {
-  const milestones = [
-    { year: "2023", t: "Founded Logic Gate IT as a software development shop." },
-    { year: "2024", t: "Launched first major CRM for hospitality clients; expanded to e-commerce." },
-    { year: "2025", t: "Added ERP solutions and cybersecurity support; growing team." },
-    { year: "2026", t: "Now serving 50+ SMBs and enterprises across multiple industries." },
+  const journey = [
+    { stage: "Property roots", t: "Started as a property maintenance company." },
+    { stage: "CEO vision", t: "Expanded into software and IT." },
+    { stage: "5+ LLC partners", t: "Active partnerships on the property side." },
+    { stage: "Hotel CRM", t: "First Hotel CRM launched this year." },
+    { stage: "Open & growing", t: "Open for software and IT support — growth phase." },
   ];
 
   return (
@@ -748,68 +937,22 @@ function About() {
           gap: 80,
           alignItems: "center",
         }}>
-          {/* LEFT — team image placeholder + cards */}
-          <div style={{ position: "relative" }}>
-            <div className="placeholder" style={{
-              aspectRatio: "4/5",
-              borderRadius: 24,
-              fontSize: 13,
-            }}>
-              [ TEAM PHOTO ]<br/>
-              <span style={{ opacity: .5, marginTop: 6 }}>Logic Gate IT technicians on-site, 4:5</span>
-            </div>
-
-            {/* Achievement card */}
-            <div className="card" style={{
-              position: "absolute",
-              bottom: -28, right: -20,
-              padding: 18,
-              boxShadow: "var(--shadow-lg)",
-              maxWidth: 240,
-              background: "#fff",
-            }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                <div style={{
-                  width: 36, height: 36, borderRadius: 10,
-                  background: "linear-gradient(135deg, #F97316, #EA580C)",
-                  display: "grid", placeItems: "center",
-                }}><Icon.Sparkle size={18} stroke="#fff"/></div>
-                <div>
-                  <div style={{ fontSize: 13, fontWeight: 600 }}>50+ Projects</div>
-                  <div style={{ fontSize: 11, color: "var(--ink-3)", fontFamily: "var(--font-mono)" }}>Delivered</div>
-                </div>
-              </div>
-              <div style={{ fontSize: 11, color: "var(--ink-3)" }}>Trusted by SMBs & enterprises</div>
-            </div>
-
-            <div className="card" style={{
-              position: "absolute",
-              top: -20, left: -16,
-              padding: 14,
-              boxShadow: "var(--shadow-lg)",
-              background: "var(--navy-900)",
-              color: "#fff",
-              border: "1px solid rgba(255,255,255,0.08)",
-            }}>
-              <div style={{ fontSize: 11, color: "rgba(148,163,184,0.8)", fontFamily: "var(--font-mono)", letterSpacing: ".08em" }}>FOUNDED 2023</div>
-              <div style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 600, marginTop: 2 }}>3 years</div>
-              <div style={{ fontSize: 11, color: "rgba(148,163,184,0.8)" }}>of building great software</div>
-            </div>
-          </div>
+          <AboutVisual/>
 
           {/* RIGHT — story */}
           <div>
             <div className="eyebrow"><span className="dot"/> About Logic Gate IT</div>
             <h2 style={{ fontSize: "clamp(32px, 3.6vw, 48px)", marginTop: 20 }}>
-              Three years building software that actually works.
+              From property maintenance to software — still growing.
             </h2>
             <p style={{ fontSize: 15, color: "var(--blue-600)", fontFamily: "var(--font-mono)", marginTop: 12, letterSpacing: "0.04em" }}>
               "Efficiently active, Effectively creative."
             </p>
             <p style={{ color: "var(--ink-2)", fontSize: 17, marginTop: 16, lineHeight: 1.65 }}>
-              We started as a lean software development team solving real problems for hospitality, retail, and enterprise clients.
-              Three years later, we've built CRMs, e-commerce platforms, ERPs, and mobile apps — all fast, all affordable, all custom.
-              We don't do templates. We solve your problem.
+              Logic Gate IT began as a property maintenance company. The CEO’s vision then pushed us into software —
+              building tools for the same operational world we already knew. Today, 5+ LLCs work with us on the property side,
+              we’ve launched our first Hotel CRM this year, and we’re open for any software or IT-related support.
+              We’re in a growing phase — and building with that energy.
             </p>
 
             <div style={{
@@ -818,7 +961,7 @@ function About() {
             }}>
               {[
                 { I: "Zap", t: "Fast delivery", d: "We ship in weeks. Agile process, quick iterations." },
-                { I: "Sparkle", t: "Quality you trust", d: "Real support after launch. We stand behind our code." },
+                { I: "Code", t: "Open for IT", d: "Software and IT support for any workflow that needs it." },
               ].map((b, i) => {
                 const IconCmp = Icon[b.I];
                 return (
@@ -834,23 +977,23 @@ function About() {
               })}
             </div>
 
-            {/* Timeline */}
+            {/* Journey */}
             <div style={{ marginTop: 40 }}>
               <div style={{ fontSize: 12, fontFamily: "var(--font-mono)", letterSpacing: ".12em", color: "var(--ink-3)", textTransform: "uppercase", marginBottom: 20 }}>
-                Milestones
+                Our journey
               </div>
               <div style={{ position: "relative", paddingLeft: 22 }}>
                 <div style={{ position: "absolute", left: 5, top: 6, bottom: 6, width: 2, background: "var(--line-2)" }}/>
-                {milestones.map((m, i) => (
+                {journey.map((m, i) => (
                   <div key={i} style={{ position: "relative", marginBottom: 16, display: "flex", gap: 16, alignItems: "baseline" }}>
                     <span style={{
                       position: "absolute", left: -22, top: 6,
                       width: 12, height: 12, borderRadius: "50%",
-                      background: i === milestones.length - 1 ? "var(--orange-500)" : "var(--blue-600)",
+                      background: i === journey.length - 1 ? "var(--orange-500)" : "var(--blue-600)",
                       border: "2px solid var(--bg-2)",
-                      boxShadow: `0 0 0 3px ${i === milestones.length - 1 ? 'rgba(249,115,22,.2)' : 'rgba(37,99,235,.18)'}`,
+                      boxShadow: `0 0 0 3px ${i === journey.length - 1 ? 'rgba(249,115,22,.2)' : 'rgba(37,99,235,.18)'}`,
                     }}/>
-                    <span style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 500, color: "var(--navy-900)", minWidth: 50 }}>{m.year}</span>
+                    <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 500, color: "var(--navy-900)", minWidth: 120, flexShrink: 0 }}>{m.stage}</span>
                     <span style={{ fontSize: 14.5, color: "var(--ink-2)" }}>{m.t}</span>
                   </div>
                 ))}

@@ -3,9 +3,7 @@
 const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
   { label: "Software", href: "#software" },
-  { label: "Careers", href: "#careers" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -60,12 +58,12 @@ function Nav() {
         </nav>
 
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <a href="tel:+18005551234" className="phone-link" style={{
+          <a href="tel:+8801907060476" className="phone-link" style={{
             display: "flex", alignItems: "center", gap: 8,
             color: "rgba(226,232,240,0.85)", fontSize: 14, fontWeight: 500,
             padding: "8px 12px",
           }}>
-            <Icon.Phone size={16}/> <span className="phone-text">1-800-555-LGIT</span>
+            <Icon.Phone size={16}/> <span className="phone-text">01907060476</span>
           </a>
           <a href="#contact" className="btn btn-primary btn-sm">
             Get Free Quote <Icon.ArrowRight size={14}/>
