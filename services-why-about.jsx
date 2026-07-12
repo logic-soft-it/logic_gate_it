@@ -479,12 +479,12 @@ function SoftwareSolutions() {
               desc: "Ship in weeks, not quarters. We move fast — agile sprints, quick iterations, no red tape. Your software launches when you need it."
             },
             {
-              I: "Coins",
+              I: "Chart",
               title: "Affordable",
               desc: "Enterprise quality, SMB pricing. No enterprise tax. Fixed-scope projects. Transparent costs. Quality software you can actually afford."
             },
             {
-              I: "Settings",
+              I: "Wrench",
               title: "Custom-Built",
               desc: "Not a template. Not a SaaS plugin. Bespoke solutions built to your exact workflow and challenges."
             },
