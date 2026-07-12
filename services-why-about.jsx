@@ -452,6 +452,66 @@ function SoftwareSolutions() {
         }}>
           {SOFTWARE_SERVICES.map(s => <ServiceCard key={s.key} s={s} variant="dark"/>)}
         </div>
+
+        {/* Differentiators */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gap: 16,
+        }}>
+          {[
+            {
+              I: "Zap",
+              title: "Fast Delivery",
+              desc: "Ship in weeks, not quarters. We move fast — agile sprints, quick iterations, no red tape. Your software launches when you need it."
+            },
+            {
+              I: "Coins",
+              title: "Affordable",
+              desc: "Enterprise quality, SMB pricing. No enterprise tax. Fixed-scope projects. Transparent costs. Quality software you can actually afford."
+            },
+            {
+              I: "Settings",
+              title: "Custom-Built",
+              desc: "Not a template. Not a SaaS plugin. Bespoke solutions built to your exact workflow and challenges."
+            },
+          ].map((d, i) => {
+            const IconCmp = Icon[d.I];
+            return (
+              <div key={i} style={{
+                position: "relative",
+                padding: 28,
+                borderRadius: 20,
+                background: "linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))",
+                border: "1px solid rgba(255,255,255,0.08)",
+                backdropFilter: "blur(10px)",
+                transition: "all .3s ease",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = "rgba(249,115,22,0.5)";
+                e.currentTarget.style.boxShadow = "0 0 0 1px rgba(249,115,22,0.2), 0 0 60px -10px rgba(249,115,22,0.3)";
+                e.currentTarget.style.transform = "translateY(-4px)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                e.currentTarget.style.boxShadow = "";
+                e.currentTarget.style.transform = "";
+              }}>
+                <div style={{
+                  width: 48, height: 48, borderRadius: 12,
+                  background: "rgba(249,115,22,0.15)",
+                  border: "1px solid rgba(249,115,22,0.25)",
+                  display: "grid", placeItems: "center",
+                  marginBottom: 20,
+                }}>
+                  <IconCmp size={22} stroke="#FBBF24"/>
+                </div>
+                <h3 style={{ fontSize: 20, color: "#fff", fontWeight: 600 }}>{d.title}</h3>
+                <p style={{ marginTop: 8, fontSize: 14.5, color: "rgba(203,213,225,0.75)" }}>{d.desc}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       <style>{`
