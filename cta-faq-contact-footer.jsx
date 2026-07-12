@@ -266,14 +266,103 @@ const emptyInquiry = {
 
 /* === CONTACT === */
 function Contact() {
-  const [form, setForm] = React.useState({ name: "", email: "", phone: "", service: "Plumbing", message: "" });
-  const [submitted, setSubmitted] = React.useState(false);
+  const inputStyle = {
+    width: "100%", padding: "10px 14px", borderRadius: 8,
+    border: "1px solid var(--line)", fontSize: 14,
+    fontFamily: "var(--font-body)",
+  };
+  const labelStyle = {
+    display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6,
+  };
 
-  const set = k => e => setForm(f => ({ ...f, [k]: e.target.value }));
-  const submit = e => {
+  const [property, setProperty] = React.useState({
+    property_address: "",
+    service_needed: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [software, setSoftware] = React.useState({
+    software_needed: "",
+    company_name: "",
+    email: "",
+    timeline: "",
+    message: "",
+  });
+
+  const [status, setStatus] = React.useState({
+    property: "idle", // idle | sending | success | error
+    software: "idle",
+  });
+  const [errors, setErrors] = React.useState({ property: "", software: "" });
+
+  const setProp = (k) => (e) => setProperty((f) => ({ ...f, [k]: e.target.value }));
+  const setSoft = (k) => (e) => setSoftware((f) => ({ ...f, [k]: e.target.value }));
+
+  const submitProperty = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setErrors((err) => ({ ...err, property: "" }));
+    setStatus((s) => ({ ...s, property: "sending" }));
+    try {
+      await sendInquiry({
+        ...emptyInquiry,
+        form_type: "Property Maintenance",
+        email: property.email.trim(),
+        phone: property.phone.trim(),
+        property_address: property.property_address.trim(),
+        service_needed: property.service_needed,
+        message: property.message.trim(),
+      });
+      setStatus((s) => ({ ...s, property: "success" }));
+      setProperty({
+        property_address: "",
+        service_needed: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+      setTimeout(() => setStatus((s) => ({ ...s, property: "idle" })), 4000);
+    } catch (err) {
+      console.error(err);
+      setStatus((s) => ({ ...s, property: "error" }));
+      setErrors((er) => ({
+        ...er,
+        property: "Couldn't send — try again or email us at hello@logicgateit.com",
+      }));
+    }
+  };
+
+  const submitSoftware = async (e) => {
+    e.preventDefault();
+    setErrors((err) => ({ ...err, software: "" }));
+    setStatus((s) => ({ ...s, software: "sending" }));
+    try {
+      await sendInquiry({
+        ...emptyInquiry,
+        form_type: "Software Solutions",
+        email: software.email.trim(),
+        company_name: software.company_name.trim(),
+        software_needed: software.software_needed,
+        timeline: software.timeline,
+        message: software.message.trim(),
+      });
+      setStatus((s) => ({ ...s, software: "success" }));
+      setSoftware({
+        software_needed: "",
+        company_name: "",
+        email: "",
+        timeline: "",
+        message: "",
+      });
+      setTimeout(() => setStatus((s) => ({ ...s, software: "idle" })), 4000);
+    } catch (err) {
+      console.error(err);
+      setStatus((s) => ({ ...s, software: "error" }));
+      setErrors((er) => ({
+        ...er,
+        software: "Couldn't send — try again or email us at hello@logicgateit.com",
+      }));
+    }
   };
 
   return (
@@ -291,32 +380,31 @@ function Contact() {
           gap: 40,
           marginTop: 40,
         }}>
-          {/* LEFT: Property Maintenance Form */}
-          <div>
+          {/* LEFT: Property Maintenance */}
+          <div style={{ position: "relative" }}>
             <h3 style={{ fontSize: 22, fontWeight: 600, color: "var(--navy-900)", marginBottom: 20 }}>
               Property Maintenance
             </h3>
-            <form style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <form onSubmit={submitProperty} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <div>
-                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
-                  Property Address
-                </label>
-                <input type="text" placeholder="123 Main St, City, State" style={{
-                  width: "100%", padding: "10px 14px", borderRadius: 8,
-                  border: "1px solid var(--line)", fontSize: 14,
-                  fontFamily: "var(--font-body)",
-                }}/>
+                <label style={labelStyle}>Property Address</label>
+                <input
+                  type="text"
+                  placeholder="123 Main St, City, State"
+                  value={property.property_address}
+                  onChange={setProp("property_address")}
+                  style={inputStyle}
+                />
               </div>
               <div>
-                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
-                  Service Needed
-                </label>
-                <select style={{
-                  width: "100%", padding: "10px 14px", borderRadius: 8,
-                  border: "1px solid var(--line)", fontSize: 14,
-                  fontFamily: "var(--font-body)",
-                }}>
-                  <option>Select a service...</option>
+                <label style={labelStyle}>Service Needed</label>
+                <select
+                  required
+                  value={property.service_needed}
+                  onChange={setProp("service_needed")}
+                  style={inputStyle}
+                >
+                  <option value="">Select a service...</option>
                   <option>Plumbing</option>
                   <option>Electrical</option>
                   <option>HVAC</option>
@@ -326,49 +414,82 @@ function Contact() {
                 </select>
               </div>
               <div>
-                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
-                  Contact Email
-                </label>
-                <input type="email" placeholder="you@company.com" style={{
-                  width: "100%", padding: "10px 14px", borderRadius: 8,
-                  border: "1px solid var(--line)", fontSize: 14,
-                  fontFamily: "var(--font-body)",
-                }}/>
+                <label style={labelStyle}>Contact Email</label>
+                <input
+                  type="email"
+                  required
+                  placeholder="you@company.com"
+                  value={property.email}
+                  onChange={setProp("email")}
+                  style={inputStyle}
+                />
               </div>
               <div>
-                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
-                  Phone
-                </label>
-                <input type="tel" placeholder="(555) 123-4567" style={{
-                  width: "100%", padding: "10px 14px", borderRadius: 8,
-                  border: "1px solid var(--line)", fontSize: 14,
-                  fontFamily: "var(--font-body)",
-                }}/>
+                <label style={labelStyle}>Phone</label>
+                <input
+                  type="tel"
+                  placeholder="(555) 123-4567"
+                  value={property.phone}
+                  onChange={setProp("phone")}
+                  style={inputStyle}
+                />
               </div>
-              <button type="submit" className="btn btn-primary" style={{
-                marginTop: 8,
-              }}>
-                Schedule Consultation <Icon.ArrowRight size={16}/>
+              <div>
+                <label style={labelStyle}>Details / Message</label>
+                <textarea
+                  rows={3}
+                  placeholder="Tell us about the property and what you need..."
+                  value={property.message}
+                  onChange={setProp("message")}
+                  style={{ ...inputStyle, resize: "vertical" }}
+                />
+              </div>
+              {errors.property && (
+                <p style={{ margin: 0, fontSize: 13, color: "#DC2626" }}>{errors.property}</p>
+              )}
+              <button
+                type="submit"
+                className="btn btn-primary"
+                disabled={status.property === "sending"}
+                style={{ marginTop: 8 }}
+              >
+                {status.property === "sending"
+                  ? "Sending…"
+                  : status.property === "success"
+                    ? <><Icon.Check size={16}/> Sent — talk soon</>
+                    : <>Schedule Consultation <Icon.ArrowRight size={16}/></>}
               </button>
             </form>
+            {status.property === "success" && (
+              <div style={{
+                position: "absolute", inset: 0,
+                background: "rgba(255,255,255,0.94)",
+                borderRadius: 12,
+                display: "grid", placeItems: "center",
+              }}>
+                <div style={{ textAlign: "center", padding: 24 }}>
+                  <h3 style={{ fontSize: 22, marginBottom: 8 }}>Thanks!</h3>
+                  <p style={{ color: "var(--ink-2)", margin: 0 }}>We'll be in touch shortly.</p>
+                </div>
+              </div>
+            )}
           </div>
 
-          {/* RIGHT: Software Solutions Form */}
-          <div>
+          {/* RIGHT: Software Solutions */}
+          <div style={{ position: "relative" }}>
             <h3 style={{ fontSize: 22, fontWeight: 600, color: "var(--navy-900)", marginBottom: 20 }}>
               Custom Software Solutions
             </h3>
-            <form style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <form onSubmit={submitSoftware} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <div>
-                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
-                  What software do you need?
-                </label>
-                <select style={{
-                  width: "100%", padding: "10px 14px", borderRadius: 8,
-                  border: "1px solid var(--line)", fontSize: 14,
-                  fontFamily: "var(--font-body)",
-                }}>
-                  <option>Select a solution...</option>
+                <label style={labelStyle}>What software do you need?</label>
+                <select
+                  required
+                  value={software.software_needed}
+                  onChange={setSoft("software_needed")}
+                  style={inputStyle}
+                >
+                  <option value="">Select a solution...</option>
                   <option>Custom CRM</option>
                   <option>ERP Solutions</option>
                   <option>E-commerce</option>
@@ -378,175 +499,91 @@ function Contact() {
                 </select>
               </div>
               <div>
-                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
-                  Company Name
-                </label>
-                <input type="text" placeholder="Your Company" style={{
-                  width: "100%", padding: "10px 14px", borderRadius: 8,
-                  border: "1px solid var(--line)", fontSize: 14,
-                  fontFamily: "var(--font-body)",
-                }}/>
+                <label style={labelStyle}>Company Name</label>
+                <input
+                  type="text"
+                  placeholder="Your Company"
+                  value={software.company_name}
+                  onChange={setSoft("company_name")}
+                  style={inputStyle}
+                />
               </div>
               <div>
-                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
-                  Contact Email
-                </label>
-                <input type="email" placeholder="you@company.com" style={{
-                  width: "100%", padding: "10px 14px", borderRadius: 8,
-                  border: "1px solid var(--line)", fontSize: 14,
-                  fontFamily: "var(--font-body)",
-                }}/>
+                <label style={labelStyle}>Contact Email</label>
+                <input
+                  type="email"
+                  required
+                  placeholder="you@company.com"
+                  value={software.email}
+                  onChange={setSoft("email")}
+                  style={inputStyle}
+                />
               </div>
               <div>
-                <label style={{ display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 }}>
-                  Project Timeline
-                </label>
-                <select style={{
-                  width: "100%", padding: "10px 14px", borderRadius: 8,
-                  border: "1px solid var(--line)", fontSize: 14,
-                  fontFamily: "var(--font-body)",
-                }}>
-                  <option>Select timeline...</option>
+                <label style={labelStyle}>Project Timeline</label>
+                <select
+                  value={software.timeline}
+                  onChange={setSoft("timeline")}
+                  style={inputStyle}
+                >
+                  <option value="">Select timeline...</option>
                   <option>ASAP (1-2 weeks)</option>
                   <option>Within a month</option>
                   <option>Within 3 months</option>
                   <option>6+ months</option>
                 </select>
               </div>
-              <button type="submit" className="btn btn-primary" style={{
-                marginTop: 8,
-              }}>
-                Request Consultation <Icon.ArrowRight size={16}/>
+              <div>
+                <label style={labelStyle}>Details / Message</label>
+                <textarea
+                  rows={3}
+                  placeholder="Tell us about the project..."
+                  value={software.message}
+                  onChange={setSoft("message")}
+                  style={{ ...inputStyle, resize: "vertical" }}
+                />
+              </div>
+              {errors.software && (
+                <p style={{ margin: 0, fontSize: 13, color: "#DC2626" }}>{errors.software}</p>
+              )}
+              <button
+                type="submit"
+                className="btn btn-primary"
+                disabled={status.software === "sending"}
+                style={{ marginTop: 8 }}
+              >
+                {status.software === "sending"
+                  ? "Sending…"
+                  : status.software === "success"
+                    ? <><Icon.Check size={16}/> Sent — talk soon</>
+                    : <>Request Consultation <Icon.ArrowRight size={16}/></>}
               </button>
             </form>
-          </div>
-        </div>
-
-        {/* Old form structure kept for reference but commented out */}
-        <form onSubmit={submit} className="card" style={{
-          padding: 36,
-          background: "#fff",
-          position: "relative",
-          display: "none",
-        }}>
-            <div className="form-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-              <Field label="Full name" v={form.name} onChange={set("name")} placeholder="Your name" required/>
-              <Field label="Email"     v={form.email} onChange={set("email")} placeholder="you@company.com" type="email" required/>
-              <Field label="Phone"     v={form.phone} onChange={set("phone")} placeholder="(555) 555-5555"/>
-              <SelectField label="Service type" v={form.service} onChange={set("service")} options={[
-                "Plumbing","Electrical","HVAC","Roofing","Landscaping","Carpentry","Painting","Appliance Repair","Property Maintenance","Software Support","Other"
-              ]}/>
-              <Field label="Message" v={form.message} onChange={set("message")} placeholder="Tell us about your property and what you need..." textarea full required/>
-            </div>
-
-            <div style={{
-              marginTop: 24, display: "flex", justifyContent: "space-between",
-              alignItems: "center", gap: 16, flexWrap: "wrap",
-            }}>
-              <div style={{ fontSize: 12, color: "var(--ink-3)", display: "flex", alignItems: "center", gap: 8 }}>
-                <Icon.Shield size={14}/> We respond within 1 business hour. Your details stay private.
-              </div>
-              <button type="submit" className="btn btn-primary" disabled={submitted}>
-                {submitted ? <><Icon.Check size={14}/> Sent — talk soon</> : <>Send message <Icon.Send size={14}/></>}
-              </button>
-            </div>
-
-            {submitted && (
+            {status.software === "success" && (
               <div style={{
                 position: "absolute", inset: 0,
                 background: "rgba(255,255,255,0.94)",
-                backdropFilter: "blur(6px)",
-                borderRadius: "var(--radius-lg)",
+                borderRadius: 12,
                 display: "grid", placeItems: "center",
-                animation: "fadeIn .3s ease",
               }}>
-                <div style={{ textAlign: "center" }}>
-                  <div style={{
-                    width: 64, height: 64, borderRadius: "50%",
-                    background: "linear-gradient(135deg, #22C55E, #16A34A)",
-                    display: "grid", placeItems: "center",
-                    margin: "0 auto 16px",
-                    boxShadow: "0 10px 30px -10px rgba(34,197,94,0.5)",
-                  }}><Icon.Check size={28} stroke="#fff" strokeWidth={2.5}/></div>
-                  <h3 style={{ fontSize: 24 }}>Thanks, {form.name || "there"}!</h3>
-                  <p style={{ color: "var(--ink-2)", marginTop: 8 }}>We'll be in touch shortly.</p>
+                <div style={{ textAlign: "center", padding: 24 }}>
+                  <h3 style={{ fontSize: 22, marginBottom: 8 }}>Thanks!</h3>
+                  <p style={{ color: "var(--ink-2)", margin: 0 }}>We'll be in touch shortly.</p>
                 </div>
               </div>
             )}
-          </form>
+          </div>
+        </div>
       </div>
 
       <style>{`
         @media (max-width: 900px) {
-          .contact-grid { grid-template-columns: 1fr !important; }
-          .form-grid { grid-template-columns: 1fr !important; }
+          .contact-forms { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>
   );
 }
-
-function Field({ label, v, onChange, placeholder, type = "text", required, textarea, full }) {
-  return (
-    <label style={{ display: "block", gridColumn: full ? "span 2" : "auto" }}>
-      <span style={{
-        fontSize: 12, fontFamily: "var(--font-mono)", letterSpacing: ".08em",
-        textTransform: "uppercase", color: "var(--ink-3)",
-        display: "block", marginBottom: 8,
-      }}>{label}{required && <span style={{ color: "var(--orange-500)" }}> *</span>}</span>
-      {textarea ? (
-        <textarea
-          value={v} onChange={onChange} placeholder={placeholder} required={required}
-          rows={5}
-          style={inputStyle}
-        />
-      ) : (
-        <input
-          type={type} value={v} onChange={onChange} placeholder={placeholder} required={required}
-          style={inputStyle}
-        />
-      )}
-    </label>
-  );
-}
-
-function SelectField({ label, v, onChange, options }) {
-  return (
-    <label style={{ display: "block" }}>
-      <span style={{
-        fontSize: 12, fontFamily: "var(--font-mono)", letterSpacing: ".08em",
-        textTransform: "uppercase", color: "var(--ink-3)",
-        display: "block", marginBottom: 8,
-      }}>{label}</span>
-      <div style={{ position: "relative" }}>
-        <select value={v} onChange={onChange} style={{
-          ...inputStyle, appearance: "none", paddingRight: 36,
-        }}>
-          {options.map(o => <option key={o} value={o}>{o}</option>)}
-        </select>
-        <span style={{
-          position: "absolute", right: 14, top: "50%",
-          transform: "translateY(-50%)", pointerEvents: "none",
-          color: "var(--ink-3)",
-        }}>▾</span>
-      </div>
-    </label>
-  );
-}
-
-const inputStyle = {
-  width: "100%",
-  padding: "12px 14px",
-  fontSize: 15,
-  fontFamily: "inherit",
-  color: "var(--navy-900)",
-  background: "var(--bg-2)",
-  border: "1px solid var(--line)",
-  borderRadius: 10,
-  outline: "none",
-  transition: "border-color .15s, background .15s",
-  resize: "vertical",
-};
 
 /* === FOOTER === */
 function Footer() {
