@@ -543,7 +543,7 @@ function Footer() {
               Efficiently active, Effectively creative.
             </p>
             <p style={{ marginTop: 16, fontSize: 14.5, color: "rgba(203,213,225,0.7)", maxWidth: 320, lineHeight: 1.6 }}>
-              Property maintenance and technology solutions for residential and commercial portfolios across the Western US.
+              Custom software solutions and property maintenance services for growing businesses. Fast delivery. Affordable. Built to your workflow.
             </p>
             <div style={{ display: "flex", gap: 10, marginTop: 24 }}>
               {[
@@ -578,8 +578,8 @@ function Footer() {
             </div>
           </div>
 
-          <FooterCol title="Company" links={["About","Projects","Careers","Contact"]}/>
-          <FooterCol title="Services" links={["Plumbing","HVAC","Electrical","Roofing","Software"]}/>
+          <FooterCol title="Company" links={["About","Contact"]}/>
+          <FooterCol title="Solutions" links={["Property Maintenance","Software Solutions","Services","Contact"]}/>
 
           <div>
             <div style={{ fontSize: 13, fontFamily: "var(--font-mono)", letterSpacing: ".12em", color: "rgba(148,163,184,0.7)", textTransform: "uppercase", marginBottom: 16 }}>Stay in touch</div>
