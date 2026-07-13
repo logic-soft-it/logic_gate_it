@@ -443,12 +443,12 @@ function SoftwareSolutions() {
               fontSize: "clamp(32px, 3.6vw, 48px)",
               fontWeight: 600, letterSpacing: "-0.02em",
               color: "#fff", marginBottom: 10,
-            }}>Custom Software Solutions</h2>
+            }}>Custom Software Solution</h2>
             <p style={{
               fontSize: 16, lineHeight: 1.6,
               color: "rgba(203,213,225,0.8)",
             }}>
-              Fast delivery. Affordable. Custom-built. We build the software your business actually needs.
+              Fast delivery. Affordable. Custom-built CRM, ERP, e-commerce, and mobile solutions.
             </p>
           </div>
           <a href="#contact" className="btn btn-ghost-dark btn-sm">

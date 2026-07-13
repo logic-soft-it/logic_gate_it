@@ -66,8 +66,8 @@ function EmergencyCTA() {
                 a licensed technician to your door — typically within 30 minutes.
               </p>
               <div style={{ display: "flex", gap: 12, marginTop: 32, flexWrap: "wrap" }}>
-                <a href="tel:+8801907060476" className="btn btn-white" style={{ fontWeight: 600 }}>
-                  <Icon.Phone size={16}/> Call 01907060476
+                <a href="tel:+8801907080476" className="btn btn-white" style={{ fontWeight: 600 }}>
+                  <Icon.Phone size={16}/> Call +8801907080476
                 </a>
                 <a href="#contact" className="btn" style={{
                   background: "rgba(255,255,255,0.12)", color: "#fff",
@@ -738,11 +738,11 @@ function Footer() {
               </button>
             </form>
             <div style={{ marginTop: 20, display: "grid", gap: 10 }}>
-              <a href="tel:+8801907060476" style={{ padding: 14, background: "rgba(249,115,22,0.08)", border: "1px solid rgba(249,115,22,0.2)", borderRadius: 10, display: "flex", alignItems: "center", gap: 10 }}>
+              <a href="tel:+8801907080476" style={{ padding: 14, background: "rgba(249,115,22,0.08)", border: "1px solid rgba(249,115,22,0.2)", borderRadius: 10, display: "flex", alignItems: "center", gap: 10 }}>
                 <Icon.Phone size={16} stroke="#F97316"/>
                 <div>
                   <div style={{ fontSize: 11, color: "rgba(251,146,60,0.9)", fontFamily: "var(--font-mono)", letterSpacing: ".08em" }}>PHONE</div>
-                  <div style={{ fontSize: 14, color: "#fff", fontWeight: 600 }}>01907060476</div>
+                  <div style={{ fontSize: 14, color: "#fff", fontWeight: 600 }}>+8801907080476</div>
                 </div>
               </a>
               <a href="mailto:info@logicgateit.com" style={{ padding: 14, background: "rgba(37,99,235,0.10)", border: "1px solid rgba(37,99,235,0.25)", borderRadius: 10, display: "flex", alignItems: "center", gap: 10 }}>
@@ -831,7 +831,7 @@ function WhatsAppFloat() {
           <p style={{ fontSize: 13, color: "var(--ink-2)", lineHeight: 1.5 }}>
             Hi! Need help with a property? Send us a WhatsApp and a real human will reply in minutes.
           </p>
-          <a href="https://wa.me/8801907060476" target="_blank" rel="noopener noreferrer" className="btn btn-sm" style={{
+          <a href="https://wa.me/8801907080476" target="_blank" rel="noopener noreferrer" className="btn btn-sm" style={{
             marginTop: 12, width: "100%",
             background: "#25D366", color: "#fff",
             justifyContent: "center",

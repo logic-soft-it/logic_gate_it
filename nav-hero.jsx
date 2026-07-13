@@ -58,12 +58,12 @@ function Nav() {
         </nav>
 
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <a href="tel:+8801907060476" className="phone-link" style={{
+          <a href="tel:+8801907080476" className="phone-link" style={{
             display: "flex", alignItems: "center", gap: 8,
             color: "rgba(226,232,240,0.85)", fontSize: 14, fontWeight: 500,
             padding: "8px 12px",
           }}>
-            <Icon.Phone size={16}/> <span className="phone-text">01907060476</span>
+            <Icon.Phone size={16}/> <span className="phone-text">+8801907080476</span>
           </a>
           <a href="#contact" className="btn btn-primary btn-sm">
             Get Free Quote <Icon.ArrowRight size={14}/>
@@ -216,79 +216,6 @@ function Hero() {
               ))}
             </div>
 
-            {/* Division Selection Cards */}
-            <div className="reveal is-visible reveal-delay-4" style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 20,
-              marginTop: 60,
-              paddingTop: 60,
-              borderTop: "1px solid rgba(255,255,255,0.1)",
-            }}>
-              {/* Property Maintenance */}
-              <a href="#maintenance" style={{
-                display: "block",
-                padding: 32,
-                borderRadius: 24,
-                background: "linear-gradient(135deg, #fff 0%, rgba(37,99,235,0.06) 100%)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                transition: "all .3s ease",
-                textDecoration: "none",
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.transform = "translateY(-4px)";
-                e.currentTarget.style.boxShadow = "0 20px 50px -10px rgba(37,99,235,0.3)";
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.transform = "";
-                e.currentTarget.style.boxShadow = "";
-              }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                  <Icon.Building size={24} stroke="#2563EB"/>
-                  <h3 style={{ fontSize: 20, fontWeight: 600, color: "#fff", margin: 0 }}>
-                    Property Maintenance
-                  </h3>
-                </div>
-                <p style={{ fontSize: 14, color: "rgba(226,232,240,0.8)", margin: "0 0 16px 0", lineHeight: 1.5 }}>
-                  Plumbing, electrical, HVAC, roofing, and more. 12+ services for residential and commercial properties.
-                </p>
-                <div style={{ fontSize: 13, color: "#2563EB", fontWeight: 500, display: "flex", alignItems: "center", gap: 6 }}>
-                  Explore services <Icon.ArrowRight size={14}/>
-                </div>
-              </a>
-
-              {/* Software Solutions */}
-              <a href="#software-solutions" style={{
-                display: "block",
-                padding: 32,
-                borderRadius: 24,
-                background: "linear-gradient(135deg, #fff 0%, rgba(249,115,22,0.06) 100%)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                transition: "all .3s ease",
-                textDecoration: "none",
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.transform = "translateY(-4px)";
-                e.currentTarget.style.boxShadow = "0 20px 50px -10px rgba(249,115,22,0.3)";
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.transform = "";
-                e.currentTarget.style.boxShadow = "";
-              }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                  <Icon.Code size={24} stroke="#F97316"/>
-                  <h3 style={{ fontSize: 20, fontWeight: 600, color: "#fff", margin: 0 }}>
-                    Custom Software
-                  </h3>
-                </div>
-                <p style={{ fontSize: 14, color: "rgba(226,232,240,0.8)", margin: "0 0 16px 0", lineHeight: 1.5 }}>
-                  Fast delivery. Affordable. Custom-built CRM, ERP, e-commerce, and mobile solutions.
-                </p>
-                <div style={{ fontSize: 13, color: "#F97316", fontWeight: 500, display: "flex", alignItems: "center", gap: 6 }}>
-                  Get consultation <Icon.ArrowRight size={14}/>
-                </div>
-              </a>
-            </div>
           </div>
 
           {/* RIGHT — composed dashboard mock */}
@@ -299,9 +226,6 @@ function Hero() {
       <style>{`
         @media (max-width: 980px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
-        }
-        @media (max-width: 820px) {
-          .division-cards { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>
