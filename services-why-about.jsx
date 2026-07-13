@@ -258,6 +258,9 @@ function Divisions({ onOpenMaintenance }) {
         @media (max-width: 820px) {
           .pillars-grid { grid-template-columns: 1fr !important; }
         }
+        @media (max-width: 560px) {
+          .pillar-card { padding: 24px !important; }
+        }
       `}</style>
     </section>
   );
@@ -955,7 +958,7 @@ function About() {
               We’re in a growing phase — and building with that energy.
             </p>
 
-            <div style={{
+            <div className="about-benefits" style={{
               display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16,
               marginTop: 32,
             }}>
@@ -1006,6 +1009,9 @@ function About() {
       <style>{`
         @media (max-width: 900px) {
           .about-grid { grid-template-columns: 1fr !important; gap: 64px !important; }
+        }
+        @media (max-width: 420px) {
+          .about-benefits { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

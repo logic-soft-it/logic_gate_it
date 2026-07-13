@@ -61,7 +61,7 @@ function MaintenanceModal({ open, onClose, initialSub = null }) {
         }}
       >
         {/* Header */}
-        <div style={{
+        <div className="modal-header" style={{
           padding: "24px 32px",
           borderBottom: "1px solid var(--line)",
           background: `linear-gradient(135deg, ${sub ? sub.accent + "12" : "#2563EB12"} 0%, transparent 60%)`,
@@ -131,7 +131,7 @@ function MaintenanceModal({ open, onClose, initialSub = null }) {
         </div>
 
         {/* Body */}
-        <div style={{ flex: 1, overflow: "auto", padding: "32px" }}>
+        <div className="modal-body" style={{ flex: 1, overflow: "auto", padding: "32px" }}>
           {!sub ? (
             <SubCategoryGrid onPick={setActiveSub}/>
           ) : (
@@ -143,6 +143,10 @@ function MaintenanceModal({ open, onClose, initialSub = null }) {
       <style>{`
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes popIn { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+        @media (max-width: 640px) {
+          .modal-header { padding: 18px 20px !important; }
+          .modal-body { padding: 20px !important; }
+        }
       `}</style>
     </div>
   );

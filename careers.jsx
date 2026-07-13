@@ -388,7 +388,7 @@ function JobModal({ job, onClose }) {
         }}
       >
         {/* Header */}
-        <div style={{
+        <div className="modal-header" style={{
           padding: "28px 32px",
           borderBottom: "1px solid var(--line)",
           background: `linear-gradient(135deg, ${job.accent}10 0%, transparent 60%)`,
@@ -468,7 +468,7 @@ function JobModal({ job, onClose }) {
         </div>
 
         {/* Body */}
-        <div style={{ flex: 1, overflow: "auto", padding: "32px" }}>
+        <div className="modal-body" style={{ flex: 1, overflow: "auto", padding: "32px" }}>
           {(tab === "description" && job.id !== "general") ? (
             <JobDescription job={job} onApply={() => setTab("apply")}/>
           ) : (
@@ -584,6 +584,10 @@ function JobModal({ job, onClose }) {
       <style>{`
         @media (max-width: 600px) {
           .job-form-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 640px) {
+          .modal-header { padding: 18px 20px !important; }
+          .modal-body { padding: 20px !important; }
         }
       `}</style>
     </div>

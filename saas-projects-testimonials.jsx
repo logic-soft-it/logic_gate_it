@@ -1,7 +1,6 @@
 // === Software Solutions, Projects, Testimonials ===
 
-// Renamed so it does not overwrite window.SoftwareSolutions from services-why-about.jsx
-function CloudPlatformSection() {
+function SoftwareSolutions() {
   const features = [
     { I: "Building", t: "Property Management", d: "Unified portfolio view, work orders, tenant comms." },
     { I: "Headset",  t: "IT Support",          d: "Managed helpdesk, on-site dispatch, escalations." },
@@ -559,6 +558,5 @@ function Testimonials() {
   );
 }
 
-window.CloudPlatformSection = CloudPlatformSection;
 window.Projects = Projects;
 window.Testimonials = Testimonials;

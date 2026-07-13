@@ -167,7 +167,7 @@ function FAQ() {
           <p>Questions about either division? Our team will give you a real answer — usually within the same business day.</p>
         </div>
 
-        <div style={{
+        <div className="faq-grid" style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: 40,

@@ -68,6 +68,14 @@ p { margin: 0; text-wrap: pretty; }
   .container { padding: 0 20px; }
 }
 
+/* Global mobile hygiene */
+html, body { overflow-x: hidden; }
+img, svg, video { max-width: 100%; height: auto; }
+@media (max-width: 640px) {
+  .btn { width: 100%; }
+  .btn.btn-sm { width: auto; }
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;

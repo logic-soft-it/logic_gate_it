@@ -31,14 +31,15 @@ function Nav() {
         borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
       }}
     >
-      <div className="container" style={{
+      <div className="container nav-inner" style={{
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: scrolled ? "14px 32px" : "20px 32px",
         transition: "padding .25s ease",
+        gap: 12,
       }}>
-        <a href="#top" style={{ display: "flex", alignItems: "center", gap: 10, color: "#fff" }}>
+        <a href="#top" className="nav-logo" style={{ display: "flex", alignItems: "center", gap: 10, color: "#fff", minWidth: 0 }}>
           <Icon.Logo size={32}/>
-          <span style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 19, letterSpacing: "-0.01em" }}>
+          <span className="nav-wordmark" style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 19, letterSpacing: "-0.01em", whiteSpace: "nowrap" }}>
             Logic Gate IT
           </span>
         </a>
@@ -65,7 +66,7 @@ function Nav() {
           }}>
             <Icon.Phone size={16}/> <span className="phone-text">+8801907080476</span>
           </a>
-          <a href="#contact" className="btn btn-primary btn-sm">
+          <a href="#contact" className="btn btn-primary btn-sm nav-cta">
             Get Free Quote <Icon.ArrowRight size={14}/>
           </a>
           <button
@@ -121,6 +122,17 @@ function Nav() {
         }
         @media (max-width: 560px) {
           .btn.btn-sm.btn-primary span.hide-sm { display: none; }
+        }
+        @media (max-width: 480px) {
+          .nav-cta { padding: 8px 12px !important; font-size: 13px !important; }
+          .nav-cta svg { display: none; }
+        }
+        @media (max-width: 380px) {
+          .nav-wordmark { display: none; }
+        }
+        @media (max-width: 640px) {
+          .nav-inner { padding-left: 20px !important; padding-right: 20px !important; }
+          .nav-logo { flex-shrink: 0; }
         }
       `}</style>
     </header>
@@ -227,6 +239,11 @@ function Hero() {
         @media (max-width: 980px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
         }
+        @media (max-width: 640px) {
+          .hero-visual-inner { min-height: 460px !important; }
+          .hero-visual-inner .glass { position: relative !important; transform: none !important; width: 100% !important; margin-bottom: 12px !important; }
+          .hero-float-ticket, .hero-float-team { display: none !important; }
+        }
       `}</style>
     </section>
   );
@@ -247,7 +264,7 @@ function HeroVisual() {
   const path = points.map((p, i) => (i === 0 ? `M ${p[0]} ${p[1]}` : `L ${p[0]} ${p[1]}`)).join(" ");
 
   return (
-    <div className="reveal is-visible reveal-delay-2" style={{
+    <div className="reveal is-visible reveal-delay-2 hero-visual-inner" style={{
       position: "relative",
       minHeight: 540,
       perspective: 1200,
@@ -320,7 +337,7 @@ function HeroVisual() {
       </div>
 
       {/* Floating ticket card */}
-      <div className="glass" style={{
+      <div className="glass hero-float-ticket" style={{
         position: "absolute", top: 0, left: 0,
         padding: "14px 18px", display: "flex", gap: 12, alignItems: "center",
         transform: "rotateY(8deg) rotateX(-2deg)",
@@ -342,7 +359,7 @@ function HeroVisual() {
       </div>
 
       {/* Floating tech card */}
-      <div className="glass" style={{
+      <div className="glass hero-float-team" style={{
         position: "absolute", bottom: 20, left: 10,
         padding: "12px 16px",
         display: "flex", gap: 10, alignItems: "center",
